@@ -1,0 +1,418 @@
+{% comment %}
+  Barakah Testimonials Section
+  
+  Usage: Add this file to your theme's sections folder
+  Displays customer reviews and testimonials
+{% endcomment %}
+
+<style>
+  .barakah-testimonials {
+    padding: 5rem 2rem;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .barakah-testimonials__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .barakah-testimonials__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .barakah-testimonials__title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    color: {{ section.settings.title_color }};
+    line-height: 1.2;
+  }
+
+  .barakah-testimonials__subtitle {
+    font-size: 2rem;
+    color: {{ section.settings.subtitle_color }};
+    margin: 0;
+  }
+
+  .barakah-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .barakah-testimonials__card {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    border: 1px solid #E5E7EB;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .barakah-testimonials__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .barakah-testimonials__stars {
+    color: #F59E0B;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.125rem;
+  }
+
+  .barakah-testimonials__quote {
+    font-size: 1.8rem;
+    line-height: 1.7;
+    color: {{ section.settings.quote_color }};
+    margin: 0 0 1.5rem 0;
+  }
+
+  .barakah-testimonials__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+  }
+
+  .barakah-testimonials__author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .barakah-testimonials__name {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: {{ section.settings.name_color }};
+    margin: 0;
+  }
+
+  .barakah-testimonials__location {
+    font-size: 1.8rem;
+    color: {{ section.settings.location_color }};
+    margin: 0;
+  }
+
+  .barakah-testimonials__purchase {
+    background-color: #F3F4F6;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 1.6rem;
+    color: #6B7280;
+    white-space: nowrap;
+  }
+
+  .barakah-testimonials__rating-summary {
+    text-align: center;
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 0.75rem;
+    border: 1px solid #E5E7EB;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 auto;
+  }
+
+  .barakah-testimonials__rating-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .barakah-testimonials__rating-stars {
+    color: #F59E0B;
+    font-size: 2rem;
+    letter-spacing: 0.125rem;
+  }
+
+  .barakah-testimonials__rating-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .barakah-testimonials__rating-score {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: {{ section.settings.rating_color }};
+    margin: 0;
+  }
+
+  .barakah-testimonials__rating-count {
+    font-size: 1.8rem;
+    color: {{ section.settings.rating_subtext_color }};
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .barakah-testimonials {
+      padding: 3rem 1rem;
+    }
+
+    .barakah-testimonials__title {
+      font-size: 2rem;
+    }
+
+    .barakah-testimonials__grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .barakah-testimonials__footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .barakah-testimonials__purchase {
+      align-self: flex-start;
+    }
+
+    .barakah-testimonials__rating-summary {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .barakah-testimonials__rating-text {
+      align-items: center;
+      text-align: center;
+    }
+  }
+</style>
+
+<section class="barakah-testimonials">
+  <div class="barakah-testimonials__container">
+    <div class="barakah-testimonials__header">
+      <h2 class="barakah-testimonials__title">{{ section.settings.section_title }}</h2>
+      <p class="barakah-testimonials__subtitle">{{ section.settings.section_subtitle }}</p>
+    </div>
+
+    <div class="barakah-testimonials__grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'testimonial' %}
+          <div class="barakah-testimonials__card" {{ block.shopify_attributes }}>
+            <div class="barakah-testimonials__stars">
+              {% for i in (1..block.settings.rating) %}★{% endfor %}
+            </div>
+            
+            <p class="barakah-testimonials__quote">"{{ block.settings.quote }}"</p>
+            
+            <div class="barakah-testimonials__footer">
+              <div class="barakah-testimonials__author">
+                <p class="barakah-testimonials__name">{{ block.settings.customer_name }}</p>
+                <p class="barakah-testimonials__location">{{ block.settings.customer_location }}</p>
+              </div>
+              
+              {% if block.settings.purchase_info != blank %}
+                <span class="barakah-testimonials__purchase">
+                  Purchased: {{ block.settings.purchase_info }}
+                </span>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_rating_summary %}
+      <div class="barakah-testimonials__rating-wrapper">
+        <div class="barakah-testimonials__rating-summary">
+          <div class="barakah-testimonials__rating-stars">★★★★★</div>
+          <div class="barakah-testimonials__rating-text">
+            <p class="barakah-testimonials__rating-score">{{ section.settings.average_rating }}</p>
+            <p class="barakah-testimonials__rating-count">{{ section.settings.rating_count }}</p>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Barakah Testimonials",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section title",
+      "default": "Loved by Muslim Families Everywhere"
+    },
+    {
+      "type": "text",
+      "id": "section_subtitle",
+      "label": "Section subtitle",
+      "default": "Join over 500+ families who have made Barakah Mugs part of their daily routine."
+    },
+    {
+      "type": "header",
+      "content": "Rating Summary"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating_summary",
+      "label": "Show rating summary",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "average_rating",
+      "label": "Average rating",
+      "default": "4.9 out of 5"
+    },
+    {
+      "type": "text",
+      "id": "rating_count",
+      "label": "Rating count text",
+      "default": "Based on 500+ reviews"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FAFAF9"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#6B7280"
+    },
+    {
+      "type": "color",
+      "id": "quote_color",
+      "label": "Quote color",
+      "default": "#1F2937"
+    },
+    {
+      "type": "color",
+      "id": "name_color",
+      "label": "Name color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "location_color",
+      "label": "Location color",
+      "default": "#6B7280"
+    },
+    {
+      "type": "color",
+      "id": "rating_color",
+      "label": "Rating score color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "rating_subtext_color",
+      "label": "Rating subtext color",
+      "default": "#6B7280"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Star rating",
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Customer quote",
+          "default": "These mugs have transformed our family mornings. We start each day with gratitude and connection. The quality is exceptional!"
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Customer name",
+          "default": "Fatima A."
+        },
+        {
+          "type": "text",
+          "id": "customer_location",
+          "label": "Customer location",
+          "default": "Dallas, TX"
+        },
+        {
+          "type": "text",
+          "id": "purchase_info",
+          "label": "Purchase info",
+          "info": "Optional - what they purchased",
+          "default": "Family Set"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Barakah Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "These mugs have transformed our family mornings. We start each day with gratitude and connection. The quality is exceptional!",
+            "customer_name": "Fatima A.",
+            "customer_location": "Dallas, TX",
+            "purchase_info": "Family Set"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Bought the Mother & Father bundle as a wedding gift. The couple was so touched! The gold calligraphy is absolutely stunning.",
+            "customer_name": "Ahmed K.",
+            "customer_location": "Chicago, IL",
+            "purchase_info": "2-Mug Bundle"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "The Bismillah mug is my daily reminder to start everything with intention. Beautiful design and the ceramic quality is top-notch.",
+            "customer_name": "Sarah M.",
+            "customer_location": "Toronto, CA",
+            "purchase_info": "Bismillah Mug"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Ordered 25 mugs for our office Eid celebration. Everyone loved them! Will definitely order again for Ramadan.",
+            "customer_name": "Omar H.",
+            "customer_location": "Houston, TX",
+            "purchase_info": "Corporate Order"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

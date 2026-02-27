@@ -1,0 +1,364 @@
+{% comment %}
+  FAQ Accordion Section
+  Displays frequently asked questions with expandable answers
+{% endcomment %}
+
+<section class="faq-section">
+  <div class="faq-container">
+    <!-- Header -->
+    <div class="faq-header">
+      <h2 class="faq-title">{{ section.settings.title }}</h2>
+      <p class="faq-description">{{ section.settings.description }}</p>
+    </div>
+
+    <!-- FAQ Items -->
+    <div class="faq-list">
+      {% for block in section.blocks %}
+        <details class="faq-item" {{ block.shopify_attributes }}>
+          <summary class="faq-question">
+            {{ block.settings.question }}
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="faq-answer">
+            {{ block.settings.answer }}
+          </div>
+        </details>
+      {% endfor %}
+    </div>
+
+    <!-- Footer CTA -->
+    {% if section.settings.footer_text != blank %}
+      <div class="faq-footer">
+        <p>
+          {{ section.settings.footer_text }}
+          {% if section.settings.footer_link_text != blank and section.settings.footer_link_url != blank %}
+            <a href="{{ section.settings.footer_link_url }}" class="faq-footer-link">
+              {{ section.settings.footer_link_text }}
+            </a>
+          {% endif %}
+        </p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    background-color: #f5f3f0;
+    padding: 80px 20px;
+  }
+
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .faq-title {
+    font-size: 42px;
+    font-weight: 400;
+    color: #2c2c2c;
+    margin-bottom: 16px;
+    font-family: Georgia, serif;
+  }
+
+  .faq-description {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .faq-item {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .faq-item:hover {
+    border-color: #d0d0d0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .faq-item[open] {
+    border-color: #d4a574;
+  }
+
+  .faq-question {
+    padding: 24px 28px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #2c2c2c;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    list-style: none;
+    user-select: none;
+    transition: background-color 0.2s ease;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question:hover {
+    background-color: #fafafa;
+  }
+
+  .faq-icon {
+    flex-shrink: 0;
+    color: #666;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 28px 24px 28px;
+    font-size: 15px;
+    color: #555;
+    line-height: 1.7;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .faq-answer p {
+    margin-bottom: 12px;
+  }
+
+  .faq-answer p:last-child {
+    margin-bottom: 0;
+  }
+
+  .faq-footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .faq-footer p {
+    font-size: 15px;
+    color: #666;
+  }
+
+  .faq-footer-link {
+    color: #2c2c2c;
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .faq-footer-link:hover {
+    color: #d4a574;
+  }
+
+  @media (max-width: 768px) {
+    .faq-section {
+      padding: 60px 16px;
+    }
+
+    .faq-title {
+      font-size: 32px;
+    }
+
+    .faq-question {
+      padding: 20px 20px;
+      font-size: 15px;
+    }
+
+    .faq-answer {
+      padding: 0 20px 20px 20px;
+      font-size: 14px;
+    }
+
+    .faq-header {
+      margin-bottom: 32px;
+    }
+  }
+</style>
+
+<script>
+  // Optional: Close other FAQs when one is opened (accordion behavior)
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqSection = document.querySelector('.faq-section');
+    if (!faqSection) return;
+
+    // Check if single-open mode is enabled
+    const singleOpen = {{ section.settings.single_open_mode | json }};
+    
+    if (singleOpen) {
+      const faqItems = faqSection.querySelectorAll('.faq-item');
+      
+      faqItems.forEach(item => {
+        item.addEventListener('toggle', function() {
+          if (this.open) {
+            faqItems.forEach(otherItem => {
+              if (otherItem !== this && otherItem.open) {
+                otherItem.open = false;
+              }
+            });
+          }
+        });
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Everything you need to know about our islamic calligraphy mugs."
+    },
+    {
+      "type": "checkbox",
+      "id": "single_open_mode",
+      "label": "Single Open Mode",
+      "info": "Only allow one FAQ to be open at a time",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Footer"
+    },
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Footer Text",
+      "default": "Still have questions?"
+    },
+    {
+      "type": "text",
+      "id": "footer_link_text",
+      "label": "Footer Link Text",
+      "default": "Contact our team"
+    },
+    {
+      "type": "url",
+      "id": "footer_link_url",
+      "label": "Footer Link URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is your question?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Your answer goes here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What material are the mugs made from?",
+            "answer": "<p>Our mugs are crafted from high-quality ceramic, ensuring durability and excellent heat retention. They're designed to maintain the temperature of your beverages while being comfortable to hold.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are the mugs microwave and dishwasher safe?",
+            "answer": "<p>Yes! All our mugs are both microwave and dishwasher safe. However, for the longevity of the beautiful calligraphy designs, we recommend hand washing when possible.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Standard shipping typically takes 5-7 business days within Bangladesh. Express shipping options are available for 2-3 day delivery at checkout.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I create a custom bundle with different mugs?",
+            "answer": "<p>Absolutely! Our bundle options allow you to mix and match any designs from our collection. Simply select your preferred bundle size and choose your favorite calligraphy designs.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer gift wrapping?",
+            "answer": "<p>Yes, we offer complimentary gift wrapping on all bundle purchases. Each bundle comes in our signature gift box with a ribbon, making it perfect for any occasion.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What's included with each purchase?",
+            "answer": "<p>Every purchase includes the mug(s) of your choice, a free Morning Rituals PDF guide, access to our private community, and beautifully packaged presentation. Bundle purchases also include monthly intention prompts.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer bulk/corporate discounts?",
+            "answer": "<p>Yes! We offer special pricing for bulk orders of 10 or more mugs. Please contact our team for a custom quote and we'll be happy to assist with your corporate gifting needs.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What's your return policy?",
+            "answer": "<p>We offer a 30-day satisfaction guarantee. If you're not completely happy with your purchase, you can return it for a full refund or exchange. The mugs must be unused and in their original packaging.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

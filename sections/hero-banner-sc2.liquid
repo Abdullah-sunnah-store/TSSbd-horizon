@@ -1,0 +1,404 @@
+{% comment %}
+  Hero Banner Section - Barakah Morning Tradition (Copy)
+  
+  Usage: Add this file to your theme's sections folder
+{% endcomment %}
+
+<style>
+  #hbsc2-banner-wrapper-{{ section.id }} {
+    position: relative;
+    background-color: #2d2d2d;
+    background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}');
+    background-size: cover;
+    background-position: center;
+    border-radius: {{ section.settings.border_radius }}px;
+    overflow: hidden;
+    margin: {{ section.settings.margin_top }}px auto {{ section.settings.margin_bottom }}px;
+    max-width: {{ section.settings.max_width }}px;
+  }
+
+  #hbsc2-banner-wrapper-{{ section.id }}::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, {{ section.settings.overlay_opacity | divided_by: 100.0 }});
+    z-index: 1;
+  }
+
+  #hbsc2-banner-content-{{ section.id }} {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 80px 20px;
+    color: #ffffff;
+  }
+
+  #hbsc2-banner-badge-{{ section.id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(139, 107, 58, 0.9);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  #hbsc2-banner-badge-{{ section.id }} .hbsc2-banner-badge-icon-{{ section.id }} {
+    width: 16px;
+    height: 16px;
+  }
+
+  #hbsc2-banner-title-{{ section.id }} {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 24px;
+    font-family: {{ section.settings.heading_font.family }}, serif;
+    color: #ffffff;
+  }
+
+  #hbsc2-banner-subtitle-{{ section.id }} {
+    font-size: clamp(16px, 2vw, 18px);
+    line-height: 1.6;
+    margin: 0 auto 32px;
+    max-width: 700px;
+    opacity: 0.95;
+  }
+
+  #hbsc2-banner-buttons-{{ section.id }} {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 48px;
+    align-items: stretch;
+  }
+
+  .hbsc2-banner-btn-{{ section.id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 36px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    letter-spacing: 2.5px;
+  }
+
+  #hbsc2-banner-primary-btn-{{ section.id }} {
+    background: #C9A961;
+    color: #0D1117;
+    transition: all 0.3s;
+    border: 2px solid #C9A961;
+    cursor: pointer;
+  }
+
+  #hbsc2-banner-primary-btn-{{ section.id }}:hover {
+    background: #C9A961;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 165, 72, 0.4);
+  }
+
+  #hbsc2-banner-secondary-btn-{{ section.id }} {
+    background: transparent;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  #hbsc2-banner-secondary-btn-{{ section.id }}:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .hbsc2-banner-btn-icon-{{ section.id }} {
+    width: 20px;
+    height: 20px;
+  }
+
+  #hbsc2-banner-features-{{ section.id }} {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .hbsc2-banner-feature-item-{{ section.id }} {
+    font-size: 14px;
+    opacity: 0.9;
+  }
+
+  @media (max-width: 768px) {
+    #hbsc2-banner-content-{{ section.id }} {
+      padding: 60px 20px;
+    }
+
+    #hbsc2-banner-wrapper-{{ section.id }} {
+      border-radius: 0;
+      margin: 0 auto;
+    }
+
+    .hbsc2-banner-btn-{{ section.id }} {
+      width: 100%;
+      max-width: 320px;
+    }
+
+    #hbsc2-banner-features-{{ section.id }} {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 16px;
+      text-align: center;
+    }
+
+    .hbsc2-banner-feature-item-{{ section.id }} {
+      font-size: 12px;
+    }
+  }
+</style>
+
+<div id="hbsc2-banner-wrapper-{{ section.id }}" class="hbsc2-banner-section-{{ section.id }}">
+  <div id="hbsc2-banner-content-{{ section.id }}">
+    
+    {% if section.settings.show_badge %}
+      <div id="hbsc2-banner-badge-{{ section.id }}">
+        <svg class="hbsc2-banner-badge-icon-{{ section.id }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        {{ section.settings.badge_text }}
+      </div>
+    {% endif %}
+
+    <h1 id="hbsc2-banner-title-{{ section.id }}">
+      {{ section.settings.title }}
+    </h1>
+
+    {% if section.settings.subtitle != blank %}
+      <p id="hbsc2-banner-subtitle-{{ section.id }}">
+        {{ section.settings.subtitle }}
+      </p>
+    {% endif %}
+
+    <div id="hbsc2-banner-buttons-{{ section.id }}">
+      {% if section.settings.primary_button_text != blank %}
+        <a href="{{ section.settings.primary_button_link }}" 
+           id="hbsc2-banner-primary-btn-{{ section.id }}"
+           class="hbsc2-banner-btn-{{ section.id }}">
+          {{ section.settings.primary_button_text }}
+          <svg class="hbsc2-banner-btn-icon-{{ section.id }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </a>
+      {% endif %}
+
+      {% if section.settings.secondary_button_text != blank %}
+        <a href="{{ section.settings.secondary_button_link }}" 
+           id="hbsc2-banner-secondary-btn-{{ section.id }}"
+           class="hbsc2-banner-btn-{{ section.id }}">
+          {{ section.settings.secondary_button_text }}
+        </a>
+      {% endif %}
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      <div id="hbsc2-banner-features-{{ section.id }}">
+        {% for block in section.blocks %}
+          <div class="hbsc2-banner-feature-item-{{ section.id }}" id="hbsc2-banner-feature-{{ section.id }}-{{ block.id }}" {{ block.shopify_attributes }}>
+            {{ block.settings.feature_text }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Banner SC2",
+  "tag": "section",
+  "class": "hbsc2-banner-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image",
+      "info": "Recommended size: 1920x600px"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Show Badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Limited Time - Campaign Ends Soon"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Start Your Family's Barakah Morning Tradition"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Join 500+ families who've transformed their daily routine. Order now and get free shipping on all bundles, plus our exclusive Morning Rituals guide."
+    },
+    {
+      "type": "header",
+      "content": "Primary Button"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_text",
+      "label": "Button Text",
+      "default": "Shop Family Bundles"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Secondary Button"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_text",
+      "label": "Button Text",
+      "default": "View All Products"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 1000,
+      "max": 1920,
+      "step": 20,
+      "unit": "px",
+      "label": "Maximum Width",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Border Radius",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_text",
+          "label": "Feature Text",
+          "default": "Free Shipping over $50"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner SC2",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Free Shipping over $50"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_text": "30-Day Returns"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Same-Day Dispatch"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Premium Gift Packaging"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

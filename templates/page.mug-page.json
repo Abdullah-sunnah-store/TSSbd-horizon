@@ -1,0 +1,403 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "barakah_hero_section_mug_DFQVEe": {
+      "type": "barakah-hero-section-mug",
+      "blocks": {
+        "stat_qRf6CD": {
+          "type": "stat",
+          "settings": {
+            "stat_type": "stars",
+            "stat_value": "",
+            "show_plus": false,
+            "stat_label": "Happy Families"
+          }
+        },
+        "stat_P9Nd9w": {
+          "type": "stat",
+          "settings": {
+            "stat_type": "number",
+            "stat_value": "3,000",
+            "show_plus": true,
+            "stat_label": "Mugs Delivered"
+          }
+        },
+        "stat_Afpnaj": {
+          "type": "stat",
+          "settings": {
+            "stat_type": "number",
+            "stat_value": "4.9/5",
+            "show_plus": false,
+            "stat_label": "Customer Rating"
+          }
+        }
+      },
+      "block_order": [
+        "stat_qRf6CD",
+        "stat_P9Nd9w",
+        "stat_Afpnaj"
+      ],
+      "disabled": true,
+      "name": "Barakah Hero Section",
+      "settings": {
+        "show_badge": true,
+        "badge_text": "Limited Time Offer - Save up to 21%",
+        "heading_line1": "Start every morning",
+        "heading_line2": "with Barakah",
+        "description": "Transform your family's daily routine with our premium Islamic calligraphy mugs. Elegant gold foil designs that inspire gratitude and connection.",
+        "primary_button_text": "Shop Collection",
+        "primary_button_link": "https://www.thesunnah.store/pages/mug#custom-featured-collection",
+        "secondary_button_text": "View Family Bundles",
+        "secondary_button_link": "https://www.thesunnah.store/pages/mug#cgb-gift-box-section",
+        "hero_image": "shopify://shop_images/Mother_Mug-1.jpg",
+        "show_price_card": false,
+        "price_label": "STARTING FROM",
+        "price_value": "$28",
+        "price_shipping": "Free shipping over 50",
+        "max_width": 1280,
+        "margin_top": 40,
+        "margin_bottom": 40
+      }
+    },
+    "featured_showpieces_FDrAk9": {
+      "type": "featured-showpieces",
+      "name": "Featured Showpieces",
+      "settings": {
+        "badge_text": "",
+        "title": "The Family",
+        "title_highlight": "Collection",
+        "description": "Premium ceramic mugs featuring authentic Islamic calligraphy in elegant gold foil. Perfect for gifting or building your own meaningful collection.",
+        "collection": "family-mugs",
+        "products_to_show": 8,
+        "background_color": "#ffffff",
+        "accent_color": "#121212",
+        "highlight_color": "#d4a548",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "barakah_features_mug_PyC3rY": {
+      "type": "barakah-features-mug",
+      "blocks": {
+        "feature_Un49jF": {
+          "type": "feature",
+          "settings": {
+            "icon": "gift",
+            "title": "Premium Quality",
+            "description": "Elegant gold foil calligraphy on premium ceramic, built to last for years"
+          }
+        },
+        "feature_d3UrKV": {
+          "type": "feature",
+          "settings": {
+            "icon": "heart",
+            "title": "Meaningful Designs",
+            "description": "Each mug features authentic Islamic calligraphy to inspire daily reflection"
+          }
+        },
+        "feature_bjz6Jb": {
+          "type": "feature",
+          "settings": {
+            "icon": "truck",
+            "title": "Fast Shipping",
+            "description": "Same-day dispatch with free shipping on all orders over 5 Mugs"
+          }
+        },
+        "feature_Wajm3P": {
+          "type": "feature",
+          "settings": {
+            "icon": "shield",
+            "title": "Satisfaction Guaranteed",
+            "description": "7-day returns and dedicated customer support for complete peace of mind"
+          }
+        }
+      },
+      "block_order": [
+        "feature_Un49jF",
+        "feature_d3UrKV",
+        "feature_bjz6Jb",
+        "feature_Wajm3P"
+      ],
+      "name": "Barakah Features",
+      "settings": {
+        "background_color": "#faf9f6",
+        "icon_bg_color": "#f5e6d3",
+        "icon_color": "#000000",
+        "title_color": "#000000",
+        "description_color": "#6b7280"
+      }
+    },
+    "new_gift_box_section_n6kXXG": {
+      "type": "new-gift-box-section",
+      "blocks": {
+        "collection_YXa44j": {
+          "type": "collection",
+          "settings": {
+            "collection": "mugs"
+          }
+        },
+        "collection_B7Xktk": {
+          "type": "collection",
+          "settings": {
+            "collection": "family-mugs"
+          }
+        },
+        "collection_CVcbeK": {
+          "type": "collection",
+          "settings": {
+            "collection": "calligraphy-mugs"
+          }
+        },
+        "collection_Ui3q9Q": {
+          "type": "collection",
+          "settings": {
+            "collection": "marble-mugs"
+          }
+        },
+        "collection_qUwdXi": {
+          "type": "collection",
+          "settings": {
+            "collection": "reminder-mugs"
+          }
+        },
+        "collection_qC4RWt": {
+          "type": "collection",
+          "settings": {
+            "collection": "quotes-mugs"
+          }
+        },
+        "collection_cMLrTH": {
+          "type": "collection",
+          "settings": {
+            "collection": "lids-coasters"
+          }
+        }
+      },
+      "block_order": [
+        "collection_YXa44j",
+        "collection_B7Xktk",
+        "collection_CVcbeK",
+        "collection_Ui3q9Q",
+        "collection_qUwdXi",
+        "collection_qC4RWt",
+        "collection_cMLrTH"
+      ],
+      "name": "New Gift Box Section",
+      "settings": {
+        "main_title": "Build Your Bundle & Save",
+        "main_subtitle": "Choose your mugs. The more you buy, the more you save."
+      }
+    },
+    "hero_banner_sc2_QmRNVb": {
+      "type": "hero-banner-sc2",
+      "blocks": {
+        "feature_dymHX6": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Same-Day Dispatch"
+          }
+        },
+        "feature_rQBXhk": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Premium Gift Packaging"
+          }
+        }
+      },
+      "block_order": [
+        "feature_dymHX6",
+        "feature_rQBXhk"
+      ],
+      "name": "Hero Banner SC2",
+      "settings": {
+        "background_image": "shopify://shop_images/Ramadanpackage_Mainwithoutbox.jpg",
+        "overlay_opacity": 60,
+        "show_badge": true,
+        "badge_text": "Limited Time - Campaign Ends Soon",
+        "title": "Start Your Family's Barakah Morning Tradition",
+        "subtitle": "Join 500+ families who've transformed their daily routine. Order now and get free shipping on all bundles, plus our exclusive Morning Rituals guide.",
+        "primary_button_text": "Shop Family Bundles",
+        "primary_button_link": "shopify://collections/for-family",
+        "secondary_button_text": "View All Products",
+        "secondary_button_link": "shopify://collections/mugs",
+        "max_width": 1920,
+        "border_radius": 0,
+        "margin_top": 20,
+        "margin_bottom": 0
+      }
+    },
+    "barakah_testimonials_mug_i6VVej": {
+      "type": "barakah-testimonials-mug",
+      "blocks": {
+        "testimonial_THHmrJ": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Beautiful design + great quality! The print feels durable and the ceramic is sturdy — I use mine for tea every morning.",
+            "customer_name": "Fatima Akter",
+            "customer_location": "Mirpur, Dhaka",
+            "purchase_info": "Family Set"
+          }
+        },
+        "testimonial_gzgeMG": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Love the message on this mug! It’s inspiring to start my day with, and the handle is very comfortable.",
+            "customer_name": "Ahmed Khan",
+            "customer_location": "Jamalpur",
+            "purchase_info": "2-Mug Bundle"
+          }
+        },
+        "testimonial_xgMKb9": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Really happy with my purchase. The mug arrived quickly, and the quality is way better than I expected.",
+            "customer_name": "Sarah Islam",
+            "customer_location": "Chattagram",
+            "purchase_info": "Bismillah Mug"
+          }
+        },
+        "testimonial_9a4YdQ": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Very satisfied with the overall experience. Packaging was secure and delivery was faster than I thought.",
+            "customer_name": "Omar Al Aziz",
+            "customer_location": "Sylhet",
+            "purchase_info": "Corporate Order"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_THHmrJ",
+        "testimonial_gzgeMG",
+        "testimonial_xgMKb9",
+        "testimonial_9a4YdQ"
+      ],
+      "name": "Barakah Testimonials",
+      "settings": {
+        "section_title": "Loved by Muslim Families Everywhere",
+        "section_subtitle": "Join over 500+ families who have made Barakah Mugs part of their daily routine.",
+        "show_rating_summary": true,
+        "average_rating": "4.9 out of 5",
+        "rating_count": "Based on 500+ reviews",
+        "background_color": "#fafaf9",
+        "title_color": "#000000",
+        "subtitle_color": "#6b7280",
+        "quote_color": "#1f2937",
+        "name_color": "#000000",
+        "location_color": "#6b7280",
+        "rating_color": "#000000",
+        "rating_subtext_color": "#6b7280"
+      }
+    },
+    "faq_section_mug_k7CrUc": {
+      "type": "faq-section-mug",
+      "blocks": {
+        "faq_item_hiJhRX": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What material are the mugs made from?",
+            "answer": "<p>Our mugs are crafted from high-quality ceramic, ensuring durability and excellent heat retention. They're designed to maintain the temperature of your beverages while being comfortable to hold.</p>"
+          }
+        },
+        "faq_item_CYD7hW": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are the mugs microwave and dishwasher safe?",
+            "answer": "<p>Yes! All our mugs are both microwave and dishwasher safe. However, for the longevity of the beautiful calligraphy designs, we recommend hand washing when possible.</p>"
+          }
+        },
+        "faq_item_JfJdbp": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Standard shipping typically takes 5-7 business days within Bangladesh. Express shipping options are available for 2-3 day delivery at checkout.</p>"
+          }
+        },
+        "faq_item_mXDDU9": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I create a custom bundle with different mugs?",
+            "answer": "<p>Absolutely! Our bundle options allow you to mix and match any designs from our collection. Simply select your preferred bundle size and choose your favorite calligraphy designs.</p>"
+          }
+        },
+        "faq_item_HWbcqr": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer gift wrapping?",
+            "answer": "<p>Yes, we offer complimentary gift wrapping on all bundle purchases. Each bundle comes in our signature gift box with a ribbon, making it perfect for any occasion.</p>"
+          }
+        },
+        "faq_item_gBc7Vt": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What's included with each purchase?",
+            "answer": "<p>Every purchase includes the mug(s) of your choice, a free Morning Rituals PDF guide, access to our private community, and beautifully packaged presentation. Bundle purchases also include monthly intention prompts.</p>"
+          }
+        },
+        "faq_item_NYMfyd": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer bulk/corporate discounts?",
+            "answer": "<p>Yes! We offer special pricing for bulk orders of 10 or more mugs. Please contact our team for a custom quote and we'll be happy to assist with your corporate gifting needs.</p>"
+          }
+        },
+        "faq_item_zVW4rF": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What's your return policy?",
+            "answer": "<p>We offer a 30-day satisfaction guarantee. If you're not completely happy with your purchase, you can return it for a full refund or exchange. The mugs must be unused and in their original packaging.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_hiJhRX",
+        "faq_item_CYD7hW",
+        "faq_item_JfJdbp",
+        "faq_item_mXDDU9",
+        "faq_item_HWbcqr",
+        "faq_item_gBc7Vt",
+        "faq_item_NYMfyd",
+        "faq_item_zVW4rF"
+      ],
+      "name": "FAQ Section",
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "description": "Everything you need to know about our islamic calligraphy mugs.",
+        "single_open_mode": false,
+        "footer_text": "Still have questions?",
+        "footer_link_text": "Contact our team",
+        "footer_link_url": "shopify://pages/contact"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "barakah_hero_section_mug_DFQVEe",
+    "featured_showpieces_FDrAk9",
+    "barakah_features_mug_PyC3rY",
+    "new_gift_box_section_n6kXXG",
+    "hero_banner_sc2_QmRNVb",
+    "barakah_testimonials_mug_i6VVej",
+    "faq_section_mug_k7CrUc"
+  ]
+}

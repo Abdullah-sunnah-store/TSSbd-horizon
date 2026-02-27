@@ -1,0 +1,601 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .custom-featured-collection {
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .custom-featured-collection__header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .custom-featured-collection__badge {
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid {{ section.settings.accent_color }};
+    border-radius: 30px;
+    font-size: 14px;
+    color: {{ section.settings.accent_color }};
+    margin-bottom: 16px;
+    background: transparent;
+  }
+
+  .custom-featured-collection__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+  }
+
+  .custom-featured-collection__title-highlight {
+    color: {{ section.settings.highlight_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .custom-featured-collection__title {
+      font-size: 32px;
+    }
+  }
+
+  .custom-featured-collection__description {
+    font-size: 16px;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .custom-featured-collection__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Mobile: 2 columns (default above) */
+  
+  /* Small tablets: 3 columns */
+  @media screen and (min-width: 550px) {
+    .custom-featured-collection__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+  }
+
+  /* Tablets: 4 columns */
+  @media screen and (min-width: 750px) {
+    .custom-featured-collection__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+  }
+
+  /* Medium desktop: 5 columns */
+  @media screen and (min-width: 990px) {
+    .custom-featured-collection__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+  }
+
+  /* Large desktop: 6 columns */
+  @media screen and (min-width: 1200px) {
+    .custom-featured-collection__grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+  }
+
+  .custom-product-card {
+    background: #f7f6f37d;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .custom-product-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  }
+
+  .custom-product-card__media {
+    position: relative;
+    aspect-ratio: 1;
+    background: #f5f5f0;
+    overflow: hidden;
+    border-radius: 12px;
+    margin: 12px;
+  }
+
+  .custom-product-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .custom-product-card:hover .custom-product-card__media img {
+    transform: scale(1.05);
+  }
+
+  .custom-product-card__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: #999;
+    font-size: 14px;
+  }
+
+  .custom-product-card__content {
+    padding: 0 16px 16px;
+  }
+
+  .custom-product-card__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+
+  .custom-product-card__title a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .custom-product-card__title a:hover {
+    color: {{ section.settings.accent_color }};
+  }
+
+  .custom-product-card__excerpt {
+    font-size: 13px;
+    color: #888;
+    margin: 0 0 12px 0;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .custom-product-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .custom-product-card__price {
+    font-size: 16px;
+    font-weight: 600;
+    color: {{ section.settings.accent_color }};
+  }
+
+  /* Quick Add Button */
+  .custom-product-card__quick-add {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    width: 44px;
+    height: 44px;
+    background: #fff;
+    border: 2px solid {{ section.settings.accent_color }};
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+
+  .custom-product-card:hover .custom-product-card__quick-add {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .custom-product-card__quick-add:hover {
+    background: {{ section.settings.accent_color }};
+    transform: translateX(-50%) scale(1.1);
+  }
+
+  .custom-product-card__quick-add:hover svg {
+    stroke: #fff;
+  }
+
+  .custom-product-card__quick-add svg {
+    width: 20px;
+    height: 20px;
+    stroke: {{ section.settings.accent_color }};
+    stroke-width: 2;
+    fill: none;
+    transition: stroke 0.3s ease;
+  }
+
+  .custom-product-card__quick-add.is-loading svg {
+    display: none;
+  }
+
+  .custom-product-card__quick-add.is-loading::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid {{ section.settings.accent_color }};
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: quickAddSpin 0.8s linear infinite;
+  }
+
+  .custom-product-card__quick-add.is-loading:hover::after {
+    border-color: #fff;
+    border-top-color: transparent;
+  }
+
+  @keyframes quickAddSpin {
+    to { transform: rotate(360deg); }
+  }
+
+  .custom-product-card__quick-add.is-added {
+    background: #27ae60;
+    border-color: #27ae60;
+  }
+
+  .custom-product-card__quick-add.is-added svg {
+    stroke: #fff;
+  }
+
+  .custom-product-card__quick-add--disabled {
+    display: none !important;
+  }
+
+  /* Sold Out Badge on Image */
+  .custom-product-card__sold-out-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.95);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 10;
+  }
+{%- endstyle -%}
+
+<div id="custom-featured-collection" class="custom-featured-collection section-{{ section.id }}-padding" >
+  <div class="page-width">
+    <div class="custom-featured-collection__header">
+      {%- if section.settings.badge_text != blank -%}
+        <span class="custom-featured-collection__badge">{{ section.settings.badge_text }}</span>
+      {%- endif -%}
+      {%- if section.settings.title != blank or section.settings.title_highlight != blank -%}
+        <h2 class="custom-featured-collection__title">
+          {{ section.settings.title }}
+          {%- if section.settings.title_highlight != blank -%}
+            <span class="custom-featured-collection__title-highlight">{{ section.settings.title_highlight }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <p class="custom-featured-collection__description">{{ section.settings.description }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="custom-featured-collection__grid">
+      {%- if section.settings.collection != blank and section.settings.collection.products.size > 0 -%}
+        {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+          <div class="custom-product-card">
+            <div class="custom-product-card__media">
+              {%- if product.featured_media -%}
+                <a href="{{ product.url }}">
+                  <img
+                    src="{{ product.featured_media | image_url: width: 600 }}"
+                    alt="{{ product.featured_media.alt | escape }}"
+                    loading="lazy"
+                    width="{{ product.featured_media.width }}"
+                    height="{{ product.featured_media.height }}"
+                  >
+                </a>
+              {%- else -%}
+                <div class="custom-product-card__placeholder">No image</div>
+              {%- endif -%}
+              {%- if product.available -%}
+                <button
+                  type="button"
+                  class="custom-product-card__quick-add"
+                  data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                  data-product-title="{{ product.title | escape }}"
+                  aria-label="Add {{ product.title | escape }} to cart"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </button>
+              {%- else -%}
+                <span class="custom-product-card__sold-out-badge">Sold Out</span>
+              {%- endif -%}
+            </div>
+            <div class="custom-product-card__content">
+              <h3 class="custom-product-card__title">
+                <a href="{{ product.url }}">{{ product.title | escape }}</a>
+              </h3>
+              {% comment %} {%- if product.description != blank -%}
+                <p class="custom-product-card__excerpt">{{ product.description | strip_html | truncate: 80 }}</p>
+              {%- endif -%} {% endcomment %}
+              <div class="custom-product-card__footer">
+                <span class="custom-product-card__price">{{ product.price | money }}</span>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..section.settings.products_to_show) -%}
+          <div class="custom-product-card">
+            <div class="custom-product-card__media">
+              <div class="custom-product-card__placeholder">No image</div>
+            </div>
+            <div class="custom-product-card__content">
+              <h3 class="custom-product-card__title">
+                <a href="#">Product Title</a>
+              </h3>
+              <p class="custom-product-card__excerpt">Product description goes here...</p>
+              <div class="custom-product-card__footer">
+                <span class="custom-product-card__price">$0.00</span>
+                <span class="custom-product-card__badge">Sold Out</span>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const quickAddButtons = document.querySelectorAll('.custom-product-card__quick-add');
+
+    quickAddButtons.forEach(button => {
+      button.addEventListener('click', async function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const variantId = this.dataset.variantId;
+        const productTitle = this.dataset.productTitle;
+
+        if (!variantId || this.classList.contains('is-loading')) return;
+
+        // Set loading state
+        this.classList.add('is-loading');
+
+        try {
+          // Add to cart with sections parameter to get updated HTML
+          const sectionsToFetch = ['cart-icon-bubble', 'cart-drawer'];
+          const response = await fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              items: [{
+                id: parseInt(variantId),
+                quantity: 1
+              }],
+              sections: sectionsToFetch,
+              sections_url: window.location.pathname
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to add to cart');
+          }
+
+          const data = await response.json();
+
+          // Remove loading, add success state
+          this.classList.remove('is-loading');
+          this.classList.add('is-added');
+
+          // Change icon to checkmark temporarily
+          this.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          `;
+
+          // Update sections from response
+          if (data.sections) {
+            updateCartSections(data.sections);
+          }
+
+          // Reset button after 2 seconds
+          setTimeout(() => {
+            this.classList.remove('is-added');
+            this.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            `;
+          }, 2000);
+
+        } catch (error) {
+          console.error('Error adding to cart:', error);
+          this.classList.remove('is-loading');
+
+          // Show error state briefly
+          this.style.borderColor = '#e74c3c';
+          setTimeout(() => {
+            this.style.borderColor = '';
+          }, 2000);
+        }
+      });
+    });
+
+    // Update cart sections from API response
+    function updateCartSections(sections) {
+      const parser = new DOMParser();
+
+      // Update cart icon bubble
+      if (sections['cart-icon-bubble']) {
+        const cartIconBubble = document.getElementById('cart-icon-bubble');
+        if (cartIconBubble) {
+          const doc = parser.parseFromString(sections['cart-icon-bubble'], 'text/html');
+          const newContent = doc.querySelector('.shopify-section');
+          if (newContent) {
+            cartIconBubble.innerHTML = newContent.innerHTML;
+          }
+        }
+      }
+
+      // Update cart drawer
+      if (sections['cart-drawer']) {
+        const doc = parser.parseFromString(sections['cart-drawer'], 'text/html');
+
+        // Update cart drawer content
+        const cartDrawer = document.querySelector('cart-drawer');
+        const newCartDrawer = doc.querySelector('cart-drawer');
+        if (cartDrawer && newCartDrawer) {
+          // Update inner content
+          const drawerInner = cartDrawer.querySelector('#CartDrawer');
+          const newDrawerInner = newCartDrawer.querySelector('#CartDrawer');
+          if (drawerInner && newDrawerInner) {
+            drawerInner.innerHTML = newDrawerInner.innerHTML;
+          } else {
+            cartDrawer.innerHTML = newCartDrawer.innerHTML;
+          }
+
+          // Re-bind overlay click
+          const overlay = cartDrawer.querySelector('#CartDrawer-Overlay');
+          if (overlay) {
+            overlay.addEventListener('click', () => cartDrawer.close());
+          }
+        }
+      }
+
+      // Dispatch custom event for other components
+      document.dispatchEvent(new CustomEvent('cart:updated'));
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Featured Showpieces",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Our Collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured"
+    },
+    {
+      "type": "text",
+      "id": "title_highlight",
+      "label": "Heading highlighted text",
+      "default": "Showpieces"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Discover our handpicked selection of elegant decorative pieces, each crafted to add sophistication to your space."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 8,
+      "label": "Products to show"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#b8976b"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Heading highlight color",
+      "default": "#b8976b"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Showpieces"
+    }
+  ]
+}
+{% endschema %}

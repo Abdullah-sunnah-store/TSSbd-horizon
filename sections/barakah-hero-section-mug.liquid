@@ -1,0 +1,596 @@
+{% comment %}
+  Two Column Hero Section - Barakah Morning
+  
+  Usage: Add this file to your theme's sections folder
+{% endcomment %}
+
+<style>
+  #barakah-hero-section-{{ section.id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: {{ section.settings.max_width }}px;
+    margin: {{ section.settings.margin_top }}px auto {{ section.settings.margin_bottom }}px;
+  }
+
+  #barakah-hero-left-{{ section.id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  #barakah-hero-badge-{{ section.id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fef3e2;
+    color: #7a5d34;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    width: fit-content;
+  }
+
+  .barakah-hero-badge-dot-{{ section.id }} {
+    width: 8px;
+    height: 8px;
+    background: #d4a548;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  #barakah-hero-heading-{{ section.id }} {
+    font-size: clamp(40px, 5.5vw, 64px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: #1a1a1a;
+    margin: 0;
+  }
+
+  .barakah-hero-heading-highlight-{{ section.id }} {
+    color: #d4a548;
+    display: block;
+    font-family: inherit;
+  }
+
+  #barakah-hero-description-{{ section.id }} {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #666666;
+    margin: 0;
+    max-width: 540px;
+  }
+
+  #barakah-hero-buttons-{{ section.id }} {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .barakah-hero-btn-{{ section.id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  #barakah-hero-primary-btn-{{ section.id }} {
+    background: #1a1a1a;
+    color: #ffffff;
+  }
+
+  #barakah-hero-primary-btn-{{ section.id }}:hover {
+    background: #2d2d2d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  #barakah-hero-secondary-btn-{{ section.id }} {
+    background: transparent;
+    color: #1a1a1a;
+    border: 2px solid #e5e5e5;
+  }
+
+  #barakah-hero-secondary-btn-{{ section.id }}:hover {
+    border-color: #1a1a1a;
+    background: #f9f9f9;
+  }
+
+  .barakah-hero-btn-icon-{{ section.id }} {
+    width: 18px;
+    height: 18px;
+  }
+
+  #barakah-hero-stats-{{ section.id }} {
+    display: flex;
+    gap: 48px;
+    padding-top: 28px;
+    margin-top: 8px;
+    border-top: 1px solid #e0e0e0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .barakah-hero-stat-item-{{ section.id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .barakah-hero-stat-stars-{{ section.id }} {
+    display: flex;
+    gap: 2px;
+    color: #d4a548;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  
+  .barakah-hero-stat-star-{{ section.id }} {
+    display: inline-block;
+  }
+
+  .barakah-hero-stat-value-{{ section.id }} {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+
+  .barakah-hero-stat-plus-{{ section.id }} {
+    font-size: 20px;
+    vertical-align: super;
+    margin-left: 1px;
+  }
+
+  .barakah-hero-stat-label-{{ section.id }} {
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.4;
+  }
+
+  #barakah-hero-right-{{ section.id }} {
+    position: relative;
+  }
+
+  #barakah-hero-image-wrapper-{{ section.id }} {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #6b6b6b;
+    aspect-ratio: 5 / 4;
+  }
+
+  #barakah-hero-main-image-{{ section.id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #barakah-hero-price-card-{{ section.id }} {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    background: #ffffff;
+    padding: 20px 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    min-width: 200px;
+  }
+
+  #barakah-hero-price-label-{{ section.id }} {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    color: #999999;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+    font-weight: 500;
+  }
+
+  #barakah-hero-price-value-{{ section.id }} {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 8px;
+    line-height: 1;
+  }
+
+  #barakah-hero-price-shipping-{{ section.id }} {
+    font-size: 13px;
+    color: #d4a548;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  @media (max-width: 1024px) {
+    #barakah-hero-section-{{ section.id }} {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 0 20px 40px;
+    }
+
+    #barakah-hero-right-{{ section.id }} {
+      order: -1;
+    }
+
+    #barakah-hero-stats-{{ section.id }} {
+      gap: 24px;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+
+    .barakah-hero-stat-value-{{ section.id }} {
+      font-size: 28px;
+    }
+     #barakah-hero-image-wrapper-{{ section.id }} {
+    aspect-ratio: 3 / 2.5;
+  }
+  }
+
+  @media (max-width: 640px) {
+    #barakah-hero-buttons-{{ section.id }} {
+      flex-direction: column;
+    }
+
+    .barakah-hero-btn-{{ section.id }} {
+      width: 100%;
+      justify-content: center;
+    }
+
+    #barakah-hero-price-card-{{ section.id }} {
+      left: 20px;
+      bottom: 20px;
+      padding: 16px 20px;
+      min-width: auto;
+    }
+
+    #barakah-hero-price-value-{{ section.id }} {
+      font-size: 32px;
+    }
+
+    #barakah-hero-price-label-{{ section.id }} {
+      font-size: 10px;
+    }
+
+    #barakah-hero-price-shipping-{{ section.id }} {
+      font-size: 12px;
+    }
+  }
+</style>
+
+<div id="barakah-hero-section-{{ section.id }}" class="page-width barakah-hero-container-{{ section.id }}">
+  
+  <!-- Left Column: Content -->
+  <div id="barakah-hero-left-{{ section.id }}">
+    
+    {% if section.settings.show_badge %}
+      <div id="barakah-hero-badge-{{ section.id }}">
+        <span class="barakah-hero-badge-dot-{{ section.id }}"></span>
+        {{ section.settings.badge_text }}
+      </div>
+    {% endif %}
+
+    <h1 id="barakah-hero-heading-{{ section.id }}">
+      {{ section.settings.heading_line1 }}
+      <span class="barakah-hero-heading-highlight-{{ section.id }}">{{ section.settings.heading_line2 }}</span>
+    </h1>
+
+    {% if section.settings.description != blank %}
+      <p id="barakah-hero-description-{{ section.id }}">
+        {{ section.settings.description }}
+      </p>
+    {% endif %}
+
+    <div id="barakah-hero-buttons-{{ section.id }}">
+      {% if section.settings.primary_button_text != blank %}
+        <a href="{{ section.settings.primary_button_link }}" 
+           id="barakah-hero-primary-btn-{{ section.id }}"
+           class="barakah-hero-btn-{{ section.id }}">
+          {{ section.settings.primary_button_text }}
+          <svg class="barakah-hero-btn-icon-{{ section.id }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </a>
+      {% endif %}
+
+      {% if section.settings.secondary_button_text != blank %}
+        <a href="{{ section.settings.secondary_button_link }}" 
+           id="barakah-hero-secondary-btn-{{ section.id }}"
+           class="barakah-hero-btn-{{ section.id }}">
+          {{ section.settings.secondary_button_text }}
+        </a>
+      {% endif %}
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      <div id="barakah-hero-stats-{{ section.id }}">
+        {% for block in section.blocks %}
+          <div class="barakah-hero-stat-item-{{ section.id }}" id="barakah-hero-stat-{{ section.id }}-{{ block.id }}" {{ block.shopify_attributes }}>
+            
+            {% if block.settings.stat_type == 'stars' %}
+              <div class="barakah-hero-stat-stars-{{ section.id }}">
+                <span class="barakah-hero-stat-star-{{ section.id }}">★</span>
+                <span class="barakah-hero-stat-star-{{ section.id }}">★</span>
+                <span class="barakah-hero-stat-star-{{ section.id }}">★</span>
+                <span class="barakah-hero-stat-star-{{ section.id }}">★</span>
+                <span class="barakah-hero-stat-star-{{ section.id }}">★</span>
+              </div>
+            {% endif %}
+
+            <div class="barakah-hero-stat-value-{{ section.id }}">
+              {{ block.settings.stat_value }}{% if block.settings.show_plus %}<span class="barakah-hero-stat-plus-{{ section.id }}">+</span>{% endif %}
+            </div>
+
+            <div class="barakah-hero-stat-label-{{ section.id }}">
+              {{ block.settings.stat_label }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+
+  <!-- Right Column: Image -->
+  <div id="barakah-hero-right-{{ section.id }}">
+    <div id="barakah-hero-image-wrapper-{{ section.id }}">
+      {% if section.settings.hero_image %}
+        <img 
+          id="barakah-hero-main-image-{{ section.id }}"
+          src="{{ section.settings.hero_image | image_url: width: 800 }}"
+          srcset="{{ section.settings.hero_image | image_url: width: 400 }} 400w,
+                  {{ section.settings.hero_image | image_url: width: 600 }} 600w,
+                  {{ section.settings.hero_image | image_url: width: 800 }} 800w,
+                  {{ section.settings.hero_image | image_url: width: 1000 }} 1000w"
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          alt="{{ section.settings.hero_image.alt | default: section.settings.heading_line1 }}"
+          loading="lazy"
+        >
+      {% else %}
+        <div style="aspect-ratio: 4/5; background: #e5e5e5; display: flex; align-items: center; justify-content: center; color: #999;">
+          Add product image
+        </div>
+      {% endif %}
+
+      {% if section.settings.show_price_card %}
+        <div id="barakah-hero-price-card-{{ section.id }}">
+          <p id="barakah-hero-price-label-{{ section.id }}">{{ section.settings.price_label }}</p>
+          <p id="barakah-hero-price-value-{{ section.id }}">{{ section.settings.price_value }}</p>
+          <p id="barakah-hero-price-shipping-{{ section.id }}">{{ section.settings.price_shipping }}</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Barakah Hero Section",
+  "tag": "section",
+  "class": "barakah-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Show Badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Limited Time Offer - Save up to 21%"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_line1",
+      "label": "Heading Line 1",
+      "default": "Start every morning"
+    },
+    {
+      "type": "text",
+      "id": "heading_line2",
+      "label": "Heading Line 2 (Highlighted)",
+      "default": "with Barakah"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Transform your family's daily routine with our premium Islamic calligraphy mugs. Elegant gold foil designs that inspire gratitude and connection."
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_text",
+      "label": "Primary Button Text",
+      "default": "Shop Collection"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_text",
+      "label": "Secondary Button Text",
+      "default": "View Family Bundles"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Hero Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Product Image",
+      "info": "Recommended size: 800x1000px"
+    },
+    {
+      "type": "header",
+      "content": "Price Card"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price_card",
+      "label": "Show Price Card",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "price_label",
+      "label": "Price Label",
+      "default": "STARTING FROM"
+    },
+    {
+      "type": "text",
+      "id": "price_value",
+      "label": "Price Value",
+      "default": "$28"
+    },
+    {
+      "type": "text",
+      "id": "price_shipping",
+      "label": "Shipping Text",
+      "default": "Free shipping over $50"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 1000,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "label": "Maximum Width",
+      "default": 1280
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistic",
+      "settings": [
+        {
+          "type": "select",
+          "id": "stat_type",
+          "label": "Type",
+          "options": [
+            {
+              "value": "number",
+              "label": "Number"
+            },
+            {
+              "value": "stars",
+              "label": "Star Rating"
+            }
+          ],
+          "default": "number"
+        },
+        {
+          "type": "text",
+          "id": "stat_value",
+          "label": "Value",
+          "default": "500"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_plus",
+          "label": "Show Plus Sign",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "stat_label",
+          "label": "Label",
+          "default": "Happy Families"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Barakah Hero Section",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "stat_type": "stars",
+            "stat_value": "500",
+            "show_plus": true,
+            "stat_label": "Happy Families"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "stat_type": "number",
+            "stat_value": "3,000",
+            "show_plus": true,
+            "stat_label": "Mugs Delivered"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "stat_type": "number",
+            "stat_value": "4.9/5",
+            "show_plus": false,
+            "stat_label": "Customer Rating"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

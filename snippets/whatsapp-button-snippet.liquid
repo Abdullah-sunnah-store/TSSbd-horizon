@@ -1,0 +1,509 @@
+<!-- WhatsApp + Priority VIP Buttons -->
+<div class="whatsapp-container">
+  <a href="#" class="wa-inline-button" id="waInlineBtn" aria-label="Chat on WhatsApp">
+    <span class="wa-inline-text">Have questions?&nbsp;<strong>Chat with us</strong></span>
+    <svg class="wa-inline-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"/>
+      <polyline points="12 5 19 12 12 19"/>
+    </svg>
+  </a>
+</div>
+
+{% assign in_gifts_collection = false %}
+{% for col in product.collections %}
+  {% if col.handle == 'all-gifts' %}
+    {% assign in_gifts_collection = true %}
+  {% endif %}
+{% endfor %}
+
+{% if in_gifts_collection %}
+<div class="vip-container">
+  <button type="button" class="vip-trigger-btn" id="vipTriggerBtn">
+    <span class="vip-sparkle">✨</span>
+    <span class="vip-label">Priority Service Available</span>
+  </button>
+</div>
+{% endif %}
+
+<!--
+  All popups injected via JS with full inline styles
+  — immune to any Shopify theme CSS overrides.
+-->
+
+<style>
+/* ── WhatsApp Button ── */
+.whatsapp-container {
+  margin-top: -1rem;
+  display: flex;
+  justify-content: center;
+}
+.wa-inline-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: none;
+  color: #555;
+  font-size: 1.5rem;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+.wa-inline-button strong { color: #2d6a2d; font-weight: 700; }
+.wa-inline-button:hover { color: #25d366; text-decoration: none; }
+.wa-inline-button:hover strong { color: #25d366; }
+.wa-inline-icon { color: #2d6a2d; flex-shrink: 0; transition: transform 0.25s ease; }
+.wa-inline-button:hover .wa-inline-icon { color: #25d366; transform: translateX(3px); }
+.wa-inline-text { user-select: none; }
+
+/* ── VIP Button ── */
+.vip-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+.vip-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background: transparent;
+  border: 1px dashed rgba(212, 175, 55, 0.5);
+  border-radius: 20px;
+  color: #6B7280;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+.vip-trigger-btn:hover {
+  background: rgba(212, 175, 55, 0.07);
+  border-color: #D4AF37;
+  color: #D4AF37;
+}
+.vip-sparkle {
+  font-size: 14px;
+  animation: vipSparkle 3s ease-in-out infinite;
+}
+@keyframes vipSparkle {
+  0%, 100% { opacity: 0.6; transform: rotate(0deg); }
+  50%       { opacity: 1;   transform: rotate(15deg); }
+}
+.vip-label { user-select: none; }
+
+/* ── Shared animations ── */
+@keyframes waFadeIn  { from { opacity: 0 } to { opacity: 1 } }
+@keyframes waSlideUp { from { opacity: 0; transform: translateY(18px) scale(0.97) } to { opacity: 1; transform: translateY(0) scale(1) } }
+@keyframes vipPop    { 0% { transform: scale(0) } 50% { transform: scale(1.15) } 100% { transform: scale(1) } }
+
+@media (max-width: 768px) { .wa-inline-button { font-size: 1.7rem; } }
+@media (prefers-reduced-motion: reduce) {
+  .wa-inline-button, .wa-inline-icon, .vip-trigger-btn, .vip-sparkle { transition: none; animation: none; }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  var WA_URL   = 'https://wa.me/8801911242132?text=Hi%21+I%27m+interested+in+your+products.';
+  var TALLY_URL = 'https://tally.so/r/aQdJYB';
+  var FONT      = "'Outfit', 'Helvetica Neue', Arial, sans-serif";
+  var FONT_SERIF = "Georgia, 'Times New Roman', serif";
+
+  /* ══════════════════════════════════════
+     WHATSAPP POPUP (Popup 1)
+  ══════════════════════════════════════ */
+  var waOverlay = document.createElement('div');
+  Object.assign(waOverlay.style, {
+    display: 'none', position: 'fixed',
+    top: '0', left: '0', right: '0', bottom: '0',
+    width: '100vw', height: '100vh', margin: '0', padding: '0',
+    background: 'rgba(0,0,0,0.55)',
+    alignItems: 'center', justifyContent: 'center',
+    zIndex: '2147483647', boxSizing: 'border-box',
+    animation: 'waFadeIn 0.2s ease forwards'
+  });
+
+  var waBox = document.createElement('div');
+  Object.assign(waBox.style, {
+    background: '#ffffff', borderRadius: '24px', padding: '40px 32px',
+    maxWidth: '400px', width: '90%', textAlign: 'center',
+    boxShadow: '0 24px 64px rgba(0,0,0,0.22)',
+    animation: 'waSlideUp 0.28s ease forwards',
+    boxSizing: 'border-box', fontFamily: FONT
+  });
+
+  var waIconWrap = document.createElement('div');
+  Object.assign(waIconWrap.style, { marginBottom: '20px' });
+  waIconWrap.innerHTML = '<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#1B5E20" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="10" r="0.9" fill="#1B5E20"/><circle cx="12" cy="10" r="0.9" fill="#1B5E20"/><circle cx="15" cy="10" r="0.9" fill="#1B5E20"/></svg>';
+
+  var waTitle = document.createElement('h2');
+  Object.assign(waTitle.style, {
+    color: '#1B5E20', fontSize: '28px', fontWeight: '700',
+    margin: '0 0 10px', fontFamily: FONT_SERIF, lineHeight: '1.3',
+    webkitTextFillColor: '#1B5E20'
+  });
+  waTitle.textContent = 'As-Salamu Alaikum!';
+
+  var waSub = document.createElement('p');
+  Object.assign(waSub.style, {
+    color: '#444444', fontSize: '17px', margin: '0 0 12px',
+    fontWeight: '400', webkitTextFillColor: '#444444'
+  });
+  waSub.textContent = 'Opening WhatsApp in a moment...';
+
+  var waDesc = document.createElement('p');
+  Object.assign(waDesc.style, {
+    color: '#555555', fontSize: '15px', lineHeight: '1.6',
+    margin: '0 0 28px', webkitTextFillColor: '#555555'
+  });
+  waDesc.textContent = "We'll respond within 5 minutes. Tap below to open WhatsApp right away.";
+
+  var waBtn = document.createElement('button');
+  Object.assign(waBtn.style, {
+    background: '#1B5E20', color: '#ffffff', border: 'none',
+    borderRadius: '12px', padding: '14px 48px', fontSize: '17px',
+    fontWeight: '700', cursor: 'pointer', webkitTextFillColor: '#ffffff',
+    fontFamily: FONT, letterSpacing: '0.3px'
+  });
+  waBtn.textContent = 'Open WhatsApp Now';
+  waBtn.onmouseover = function() { this.style.background = '#0D3818'; };
+  waBtn.onmouseout  = function() { this.style.background = '#1B5E20'; };
+
+  waBox.appendChild(waIconWrap);
+  waBox.appendChild(waTitle);
+  waBox.appendChild(waSub);
+  waBox.appendChild(waDesc);
+  waBox.appendChild(waBtn);
+  waOverlay.appendChild(waBox);
+  document.body.appendChild(waOverlay);
+
+  /* ── WhatsApp Logic ── */
+  var waTimer = null;
+
+  function showWaPopup() {
+    waOverlay.style.display = 'flex';
+    clearTimeout(waTimer);
+    waTimer = setTimeout(function() {
+      closeWaPopup();
+      window.open(WA_URL, '_blank', 'noopener,noreferrer');
+    }, 3000);
+  }
+  function closeWaPopup() {
+    clearTimeout(waTimer);
+    waOverlay.style.display = 'none';
+  }
+
+  document.getElementById('waInlineBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    showWaPopup();
+  });
+  waBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    closeWaPopup();
+    window.open(WA_URL, '_blank', 'noopener,noreferrer');
+  });
+  waOverlay.addEventListener('click', function(e) { if (e.target === waOverlay) closeWaPopup(); });
+
+
+  /* ══════════════════════════════════════
+     VIP PRIORITY POPUP (Popup 2)
+  ══════════════════════════════════════ */
+  var vipOverlay = document.createElement('div');
+  Object.assign(vipOverlay.style, {
+    display: 'none', position: 'fixed',
+    top: '0', left: '0', right: '0', bottom: '0',
+    width: '100vw', height: '100vh', margin: '0', padding: '0',
+    background: 'rgba(0,0,0,0.6)',
+    alignItems: 'center', justifyContent: 'center',
+    zIndex: '2147483647', boxSizing: 'border-box',
+    animation: 'waFadeIn 0.2s ease forwards'
+  });
+
+  var vipBox = document.createElement('div');
+  Object.assign(vipBox.style, {
+    background: '#ffffff', borderRadius: '24px', padding: '40px 32px',
+    maxWidth: '460px', width: '92%', textAlign: 'center',
+    boxShadow: '0 24px 64px rgba(0,0,0,0.22)',
+    animation: 'waSlideUp 0.28s ease forwards',
+    boxSizing: 'border-box', fontFamily: FONT,
+    maxHeight: '90vh', overflowY: 'auto',
+    position: 'relative'
+  });
+
+  // Close X button
+  var vipClose = document.createElement('button');
+  Object.assign(vipClose.style, {
+    position: 'absolute', top: '16px', right: '20px',
+    background: 'none', border: 'none', fontSize: '26px',
+    color: '#999', cursor: 'pointer', lineHeight: '1',
+    padding: '0', webkitTextFillColor: '#999'
+  });
+  vipClose.textContent = '×';
+  vipClose.onmouseover = function() { this.style.color = '#333'; this.style.webkitTextFillColor = '#333'; };
+  vipClose.onmouseout  = function() { this.style.color = '#999'; this.style.webkitTextFillColor = '#999'; };
+
+  // Star icon
+  var vipIconWrap = document.createElement('div');
+  Object.assign(vipIconWrap.style, { marginBottom: '18px', animation: 'vipPop 0.5s ease forwards' });
+  vipIconWrap.innerHTML = '<span style="font-size:64px;line-height:1;display:block;">⭐</span>';
+
+  // Title
+  var vipTitle = document.createElement('h2');
+  Object.assign(vipTitle.style, {
+    color: '#1B5E20', fontSize: '28px', fontWeight: '700',
+    margin: '0 0 14px', fontFamily: FONT_SERIF, lineHeight: '1.3',
+    webkitTextFillColor: '#1B5E20'
+  });
+  vipTitle.textContent = 'Priority Service';
+
+  // Intro text
+  var vipIntro = document.createElement('p');
+  Object.assign(vipIntro.style, {
+    color: '#444444', fontSize: '15px', lineHeight: '1.65',
+    margin: '0 0 22px', webkitTextFillColor: '#444444'
+  });
+  vipIntro.innerHTML = 'Join the <strong style="color:#2C3E50;-webkit-text-fill-color:#2C3E50;">Priority Family</strong> and experience VIP treatment with every order.';
+
+  // Benefits list
+  var benefits = [
+    ['Your personal curator', ' who remembers your preferences'],
+    ['Phone call within 15 minutes', ' for personalized guidance'],
+    ['Surprise gift with every order', ''],
+    ['Premium gift wrapping', ' always included'],
+    ['Priority shipping', ' (faster delivery)']
+  ];
+
+  var benefitBox = document.createElement('div');
+  Object.assign(benefitBox.style, {
+    background: '#F5EFE7', borderRadius: '14px',
+    padding: '20px 22px', marginBottom: '22px', textAlign: 'left'
+  });
+
+  benefits.forEach(function(b) {
+    var row = document.createElement('div');
+    Object.assign(row.style, {
+      display: 'flex', alignItems: 'flex-start', gap: '12px',
+      marginBottom: '12px', fontSize: '14px', lineHeight: '1.55',
+      color: '#2C3E50', webkitTextFillColor: '#2C3E50'
+    });
+    var tick = document.createElement('span');
+    Object.assign(tick.style, {
+      color: '#D4AF37', fontSize: '18px', flexShrink: '0',
+      webkitTextFillColor: '#D4AF37', marginTop: '-1px'
+    });
+    tick.textContent = '✓';
+    var txt = document.createElement('span');
+    txt.innerHTML = '<strong style="color:#2C3E50;-webkit-text-fill-color:#2C3E50;">' + b[0] + '</strong>' + b[1];
+    row.appendChild(tick);
+    row.appendChild(txt);
+    benefitBox.appendChild(row);
+  });
+
+  // Remove last margin
+  if (benefitBox.lastChild) benefitBox.lastChild.style.marginBottom = '0';
+
+  // Badge
+  var vipBadge = document.createElement('div');
+  Object.assign(vipBadge.style, {
+    display: 'inline-flex', alignItems: 'center', gap: '6px',
+    background: 'rgba(27,94,32,0.09)', color: '#1B5E20',
+    padding: '7px 16px', borderRadius: '20px', fontSize: '12px',
+    fontWeight: '600', marginBottom: '22px', webkitTextFillColor: '#1B5E20'
+  });
+  vipBadge.innerHTML = '✨ ৳100 to join';
+
+  // CTA button — opens Tally form modal
+  var vipCta = document.createElement('button');
+  Object.assign(vipCta.style, {
+    display: 'block', width: '100%', background: '#1B5E20',
+    color: '#ffffff', border: 'none', borderRadius: '12px',
+    padding: '16px 24px', fontSize: '17px', fontWeight: '700',
+    cursor: 'pointer', webkitTextFillColor: '#ffffff',
+    fontFamily: FONT, letterSpacing: '0.3px', marginTop: '4px'
+  });
+  vipCta.textContent = 'Yes, I Want Priority Service!';
+  vipCta.onmouseover = function() { this.style.background = '#0D3818'; };
+  vipCta.onmouseout  = function() { this.style.background = '#1B5E20'; };
+
+  vipBox.appendChild(vipClose);
+  vipBox.appendChild(vipIconWrap);
+  vipBox.appendChild(vipTitle);
+  vipBox.appendChild(vipIntro);
+  vipBox.appendChild(benefitBox);
+  vipBox.appendChild(vipBadge);
+  vipBox.appendChild(vipCta);
+  vipOverlay.appendChild(vipBox);
+  document.body.appendChild(vipOverlay);
+
+
+  /* ══════════════════════════════════════
+     TALLY FORM POPUP (Popup 3)
+  ══════════════════════════════════════ */
+  var tallyOverlay = document.createElement('div');
+  Object.assign(tallyOverlay.style, {
+    display: 'none', position: 'fixed',
+    top: '0', left: '0', right: '0', bottom: '0',
+    width: '100vw', height: '100vh', margin: '0', padding: '0',
+    background: 'rgba(0,0,0,0.65)',
+    alignItems: 'center', justifyContent: 'center',
+    zIndex: '2147483647', boxSizing: 'border-box',
+    animation: 'waFadeIn 0.2s ease forwards'
+  });
+
+  var tallyBox = document.createElement('div');
+  Object.assign(tallyBox.style, {
+    background: '#ffffff', borderRadius: '20px',
+    maxWidth: '520px', width: '94%', maxHeight: '92vh',
+    overflowY: 'auto', position: 'relative',
+    boxShadow: '0 24px 64px rgba(0,0,0,0.3)',
+    animation: 'waSlideUp 0.28s ease forwards',
+    boxSizing: 'border-box'
+  });
+
+  // Tally header
+  var tallyHeader = document.createElement('div');
+  Object.assign(tallyHeader.style, {
+    padding: '24px 24px 16px', borderBottom: '1px solid #f0f0f0',
+    position: 'relative'
+  });
+
+  var tallyCloseBtn = document.createElement('button');
+  Object.assign(tallyCloseBtn.style, {
+    position: 'absolute', top: '16px', right: '18px',
+    background: 'none', border: 'none', fontSize: '26px',
+    color: '#999', cursor: 'pointer', padding: '0', lineHeight: '1',
+    webkitTextFillColor: '#999'
+  });
+  tallyCloseBtn.textContent = '×';
+  tallyCloseBtn.onmouseover = function() { this.style.color = '#333'; this.style.webkitTextFillColor = '#333'; };
+  tallyCloseBtn.onmouseout  = function() { this.style.color = '#999'; this.style.webkitTextFillColor = '#999'; };
+
+  var tallyHeading = document.createElement('h2');
+  Object.assign(tallyHeading.style, {
+    color: '#1a1a1a', fontSize: '22px', fontWeight: '700',
+    margin: '0 0 6px', fontFamily: FONT_SERIF,
+    webkitTextFillColor: '#1a1a1a'
+  });
+  tallyHeading.textContent = 'Become a Priority Client';
+
+  var tallySub = document.createElement('p');
+  Object.assign(tallySub.style, {
+    color: '#666', fontSize: '13px', margin: '0',
+    webkitTextFillColor: '#666'
+  });
+  tallySub.textContent = 'Get exclusive access to premium support and special offers';
+
+  tallyHeader.appendChild(tallyCloseBtn);
+  tallyHeader.appendChild(tallyHeading);
+  tallyHeader.appendChild(tallySub);
+
+  // Iframe
+  var tallyIframe = document.createElement('iframe');
+  tallyIframe.src = TALLY_URL;
+  tallyIframe.width = '100%';
+  tallyIframe.height = '520';
+  tallyIframe.frameBorder = '0';
+  tallyIframe.marginHeight = '0';
+  tallyIframe.marginWidth = '0';
+  tallyIframe.title = 'Priority Client Form';
+  Object.assign(tallyIframe.style, {
+    border: 'none', display: 'block',
+    borderRadius: '0 0 20px 20px'
+  });
+
+  // Success message (hidden initially)
+  var tallySuccess = document.createElement('div');
+  Object.assign(tallySuccess.style, {
+    display: 'none', textAlign: 'center', padding: '60px 30px'
+  });
+  tallySuccess.innerHTML = [
+    '<div style="width:80px;height:80px;background:#27ae60;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;animation:vipPop 0.5s ease-out;">',
+    '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>',
+    '</div>',
+    '<h3 style="font-size:26px;font-weight:700;color:#1a1a1a;margin:0 0 12px;-webkit-text-fill-color:#1a1a1a;">Thank You!</h3>',
+    '<p style="font-size:15px;color:#666;line-height:1.6;-webkit-text-fill-color:#666;">We\'ve received your request. Our team will contact you shortly to discuss your priority client benefits.</p>'
+  ].join('');
+
+  var tallyFrameWrap = document.createElement('div');
+  tallyFrameWrap.appendChild(tallyIframe);
+
+  tallyBox.appendChild(tallyHeader);
+  tallyBox.appendChild(tallyFrameWrap);
+  tallyBox.appendChild(tallySuccess);
+  tallyOverlay.appendChild(tallyBox);
+  document.body.appendChild(tallyOverlay);
+
+  // Listen for Tally form submission
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.event === 'Tally.FormSubmitted') {
+      tallyFrameWrap.style.display = 'none';
+      tallySuccess.style.display = 'block';
+      setTimeout(closeTallyPopup, 3000);
+    }
+  });
+
+  /* ── VIP + Tally Logic ── */
+  function showVipPopup() {
+    vipOverlay.style.display = 'flex';
+  }
+  function closeVipPopup() {
+    vipOverlay.style.display = 'none';
+  }
+  function showTallyPopup() {
+    closeVipPopup();
+    // Reset form state
+    tallyFrameWrap.style.display = 'block';
+    tallySuccess.style.display = 'none';
+    tallyIframe.src = TALLY_URL;
+    tallyOverlay.style.display = 'flex';
+  }
+  function closeTallyPopup() {
+    tallyOverlay.style.display = 'none';
+  }
+
+  // VIP trigger button — only exists on gift collection pages
+  var vipTrigger = document.getElementById('vipTriggerBtn');
+  if (vipTrigger) {
+    vipTrigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      showVipPopup();
+    });
+  }
+
+  // VIP popup close X
+  vipClose.addEventListener('click', function(e) {
+    e.stopPropagation();
+    closeVipPopup();
+  });
+
+  // VIP CTA → open Tally form
+  vipCta.addEventListener('click', function(e) {
+    e.stopPropagation();
+    showTallyPopup();
+  });
+
+  // Tally popup close X
+  tallyCloseBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    closeTallyPopup();
+  });
+
+  // Backdrop clicks
+  vipOverlay.addEventListener('click',   function(e) { if (e.target === vipOverlay)   closeVipPopup(); });
+  tallyOverlay.addEventListener('click', function(e) { if (e.target === tallyOverlay) closeTallyPopup(); });
+
+  // ESC key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeWaPopup();
+      closeVipPopup();
+      closeTallyPopup();
+    }
+  });
+
+});
+</script>

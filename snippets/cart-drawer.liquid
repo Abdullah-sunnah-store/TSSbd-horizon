@@ -1,0 +1,1158 @@
+<style>
+  .cart-drawer__empty-content .button {
+    color: #fff !important;
+  }
+  .cart-drawer .cart-item__image {
+    border-radius: 15px;
+  }
+  .wow-text {
+    display: flex;
+    width: calc(100% + 32px);
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    background: rgb(29 29 29);
+    margin: 10px -16px 15px -16px;
+    padding: 0 15px;
+  }
+  .wow-text h5 {
+    color: #fff;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+    padding-left: 5px;
+    margin: 0;
+  }
+  .wow-text p {
+    color: #fff;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+  }
+  .cart__ctas button {
+    background-color: #000000;
+  }
+  @media screen and (max-width: 767px) {
+    .wow-text h5 { font-size: 14px; }
+    .wow-text p  { font-size: 14px; }
+  }
+
+  /* ==================== CHECKOUT BUTTON SHINE ==================== */
+  .cart__checkout-button {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .cart__checkout-button::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 150%; height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 50%, rgba(255,255,255,0.4) 70%, rgba(255,255,255,0) 80%);
+    transform: translateX(-100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .cart__checkout-button:hover:not(:disabled)::before {
+    animation: checkoutShine 2s ease-in-out infinite;
+  }
+  @keyframes checkoutShine {
+    0%        { transform: translateX(-100%); }
+    50%, 100% { transform: translateX(100%);  }
+  }
+
+  /* ==================== UPSELL POPUP ==================== */
+  .upsell-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .upsell-popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .upsell-popup {
+    background: #fff;
+    width: 90%;
+    max-width: 460px;
+    border-radius: 16px;
+    padding: 28px 20px 28px;
+    transform: scale(0.92);
+    transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.3s ease;
+    opacity: 0;
+    /* Fixed height so popup itself doesn't grow — products scroll inside */
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+  .upsell-popup-overlay.active .upsell-popup {
+    transform: scale(1);
+    opacity: 1;
+  }
+  .upsell-popup__close {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 50%;
+    width: 30px; height: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    line-height: 1;
+    flex-shrink: 0;
+    z-index: 2;
+  }
+  .upsell-popup__close:hover { background: #e0e0e0; color: #111; }
+
+  .upsell-popup__heading {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 3px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .upsell-popup__subheading {
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+    margin: 0 0 16px;
+    flex-shrink: 0;
+  }
+
+  /* ==================== SCROLLABLE PRODUCTS AREA ==================== */
+  .upsell-popup__products-wrapper {
+    flex: 1;
+    min-height: 0; /* critical for flex children to scroll */
+    position: relative;
+  }
+
+  /* Scrollable list — shows exactly ~3 items, rest scroll */
+  .upsell-popup__products {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* 3 items × ~78px each + 2 gaps × 10px = ~254px; tweak to taste */
+    max-height: 254px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 4px; /* breathing room for scrollbar */
+    scroll-behavior: smooth;
+    /* Custom scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: #d0d0d0 transparent;
+  }
+  .upsell-popup__products::-webkit-scrollbar {
+    width: 4px;
+  }
+  .upsell-popup__products::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .upsell-popup__products::-webkit-scrollbar-thumb {
+    background: #d0d0d0;
+    border-radius: 4px;
+  }
+  .upsell-popup__products::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+  }
+
+  /* Fade-out hint at bottom to signal scrollability */
+  .upsell-popup__products-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 36px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.95));
+    pointer-events: none;
+    border-radius: 0 0 8px 8px;
+    transition: opacity 0.2s;
+  }
+  /* Hide fade when scrolled to bottom */
+  .upsell-popup__products-wrapper.at-bottom::after {
+    opacity: 0;
+  }
+
+  /* ==================== SCROLL HINT LABEL ==================== */
+  .upsell-popup__scroll-hint {
+    text-align: center;
+    font-size: 11px;
+    color: #bbb;
+    margin: 6px 0 12px;
+    letter-spacing: 0.2px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  .upsell-popup__scroll-hint svg {
+    animation: bounceDown 1.4s ease-in-out infinite;
+  }
+  @keyframes bounceDown {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(3px); }
+  }
+
+  /* ==================== UPSELL PRODUCT CARD ==================== */
+  .upsell-popup__product-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border: 1.5px solid #e8e8e8;
+    border-radius: 10px;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    flex-shrink: 0;
+  }
+  .upsell-popup__product-item:hover {
+    border-color: #ccc;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .upsell-popup__product-img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+    background: #f5f5f5;
+  }
+
+  .upsell-popup__product-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .upsell-popup__product-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111;
+    line-height: 1.35;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .upsell-popup__product-price-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .upsell-popup__product-price {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111;
+  }
+  .upsell-popup__product-compare {
+    font-size: 12px;
+    color: #bbb;
+    text-decoration: line-through;
+    font-weight: 400;
+  }
+
+  .upsell-popup__add-btn {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    background: #fff;
+    color: #111;
+    border: 1.5px solid #d0d0d0;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    z-index: 0;
+  }
+  .upsell-popup__add-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 150%; height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 50%, rgba(255,255,255,0.5) 70%, rgba(255,255,255,0) 80%);
+    transform: translateX(-100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .upsell-popup__add-btn:hover:not(:disabled) {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+  }
+  .upsell-popup__add-btn:hover:not(:disabled)::before {
+    animation: upsellShine 2s ease-in-out infinite;
+  }
+  .upsell-popup__add-btn.added {
+    background: #059669;
+    color: #fff;
+    border-color: #059669;
+  }
+  .upsell-popup__add-btn:disabled {
+    background: #f5f5f5;
+    color: #aaa;
+    border-color: #e0e0e0;
+    cursor: not-allowed;
+  }
+  .upsell-popup__add-btn .upsell-plus-icon {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  @keyframes upsellShine {
+    0%        { transform: translateX(-100%); }
+    50%, 100% { transform: translateX(100%);  }
+  }
+
+  /* ==================== PROCEED & SKIP BUTTONS ==================== */
+  .upsell-popup__footer {
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .upsell-popup__checkout-btn {
+    width: 100%;
+    padding: 14px;
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    transition: background 0.2s;
+  }
+  .upsell-popup__checkout-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 150%; height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 50%, rgba(255,255,255,0.4) 70%, rgba(255,255,255,0) 80%);
+    transform: translateX(-100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .upsell-popup__checkout-btn:hover::before {
+    animation: upsellShine 2s ease-in-out infinite;
+  }
+  .upsell-popup__skip {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #999;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+    padding: 4px;
+  }
+  .upsell-popup__skip:hover { color: #333; text-decoration: underline; }
+  .upsell-popup__loading {
+    text-align: center;
+    padding: 28px 0;
+    font-size: 13px;
+    color: #bbb;
+  }
+</style>
+
+
+{% comment %}
+  Renders cart drawer
+  Usage: {% render 'cart-drawer' %}
+{% endcomment %}
+
+{{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  .drawer { visibility: hidden; }
+</style>
+
+<cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
+  <div id="CartDrawer" class="cart-drawer">
+    <div id="CartDrawer-Overlay" class="cart-drawer__overlay"
+      onclick="this.closest('cart-drawer').close()"></div>
+    <div
+      class="drawer__inner gradient color-{{ settings.cart_color_scheme }}"
+      role="dialog"
+      aria-modal="true"
+      aria-label="{{ 'sections.cart.title' | t }}"
+      tabindex="-1"
+    >
+      {%- if cart == empty -%}
+        <div class="drawer__inner-empty">
+          <div class="cart-drawer__warnings center{% if settings.cart_drawer_collection != blank %} cart-drawer__warnings--has-collection{% endif %}">
+            <div class="cart-drawer__empty-content">
+              <h2 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h2>
+              <button
+                class="drawer__close"
+                type="button"
+                onclick="this.closest('cart-drawer').close()"
+                aria-label="{{ 'accessibility.close' | t }}"
+              >
+                <span class="svg-wrapper">{{- 'icon-close.svg' | inline_asset_content -}}</span>
+              </button>
+              <a href="{{ routes.all_products_collection_url }}" class="button">
+                {{ 'general.continue_shopping' | t }}
+              </a>
+              {%- if shop.customer_accounts_enabled and customer == null -%}
+                <p class="cart__login-title h3">{{ 'sections.cart.login.title' | t }}</p>
+                <p class="cart__login-paragraph">
+                  {{ 'sections.cart.login.paragraph_html' | t: link: routes.account_login_url }}
+                </p>
+              {%- endif -%}
+            </div>
+          </div>
+          {%- if settings.cart_drawer_collection != blank -%}
+            <div class="cart-drawer__collection">
+              {% render 'card-collection', card_collection: settings.cart_drawer_collection, columns: 1 %}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <div class="drawer__header">
+        <h2 class="drawer__heading">{{ 'sections.cart.title' | t }}</h2>
+        <button
+          class="drawer__close"
+          type="button"
+          onclick="this.closest('cart-drawer').close()"
+          aria-label="{{ 'accessibility.close' | t }}"
+        >
+          <span class="svg-wrapper">{{- 'icon-close.svg' | inline_asset_content -}}</span>
+        </button>
+      </div>
+
+      <div class="wow-text">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <g clip-path="url(#clip0_468_801)">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M13.2162 12.4899C9.56063 12.4899 6.60808 9.52566 6.60808 5.88184C6.60808 9.52566 3.64382 12.4899 0 12.4899C3.64382 12.4899 6.60808 15.4425 6.60808 19.0863C6.60808 15.4425 9.56063 12.4899 13.2162 12.4899Z" fill="url(#paint0_linear_468_801)"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9999 15.8993C17.9964 15.8993 16.3796 14.2707 16.3796 12.2789C16.3796 14.2707 14.751 15.8993 12.7592 15.8993C14.751 15.8993 16.3796 17.5162 16.3796 19.5197C16.3796 17.5162 17.9964 15.8993 19.9999 15.8993ZM17.9144 4.88586C15.4774 4.88586 13.509 2.91749 13.509 0.480469C13.509 2.91749 11.5407 4.88586 9.10364 4.88586C11.5407 4.88586 13.509 6.85422 13.509 9.29125C13.509 6.85422 15.4774 4.88586 17.9144 4.88586Z" fill="#FFB030"/>
+          </g>
+          <defs>
+            <linearGradient id="paint0_linear_468_801" x1="-3" y1="5" x2="12.5" y2="19" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FDB43C"/>
+              <stop offset="1" stop-color="#FFC361"/>
+            </linearGradient>
+            <clipPath id="clip0_468_801">
+              <rect width="20" height="20" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+        <h5>Ma Sha Allah!</h5>
+        <p>Choices full of blessings!</p>
+      </div>
+
+      <cart-drawer-items {% if cart == empty %}class="is-empty"{% endif %}>
+        <form
+          action="{{ routes.cart_url }}"
+          id="CartDrawer-Form"
+          class="cart__contents cart-drawer__form"
+          method="post"
+        >
+          <div id="CartDrawer-CartItems" class="drawer__contents js-contents">
+            {%- if cart != empty -%}
+              <div class="drawer__cart-items-wrapper">
+                <table class="cart-items" role="table">
+                  <thead role="rowgroup">
+                    <tr role="row">
+                      <th id="CartDrawer-ColumnProductImage" role="columnheader">
+                        <span class="visually-hidden">{{ 'sections.cart.headings.image' | t }}</span>
+                      </th>
+                      <th id="CartDrawer-ColumnProduct" class="caption-with-letter-spacing" scope="col" role="columnheader">
+                        {{ 'sections.cart.headings.product' | t }}
+                      </th>
+                      <th id="CartDrawer-ColumnTotal" class="right caption-with-letter-spacing" scope="col" role="columnheader">
+                        {{ 'sections.cart.headings.total' | t }}
+                      </th>
+                      <th id="CartDrawer-ColumnQuantity" role="columnheader">
+                        <span class="visually-hidden">{{ 'sections.cart.headings.quantity' | t }}</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody role="rowgroup">
+                    {%- for item in cart.items -%}
+                      <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
+                        <td class="cart-item__media" role="cell" headers="CartDrawer-ColumnProductImage">
+                          {% if item.image %}
+                            <a href="{{ item.url }}" class="cart-item__link" tabindex="-1" aria-hidden="true"> </a>
+                            <img
+                              class="cart-item__image"
+                              src="{{ item.image | image_url: width: 300 }}"
+                              alt="{{ item.image.alt | escape }}"
+                              loading="lazy"
+                              width="150"
+                              height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
+                            >
+                          {% endif %}
+                        </td>
+                        <td class="cart-item__details" role="cell" headers="CartDrawer-ColumnProduct">
+                          {%- if settings.show_vendor -%}
+                            <p class="caption-with-letter-spacing light">{{ item.product.vendor }}</p>
+                          {%- endif -%}
+                          <a href="{{ item.url }}" class="cart-item__name h4 break">
+                            {{- item.product.title | escape -}}
+                          </a>
+                          {%- if item.original_price != item.final_price -%}
+                            <div class="cart-item__discounted-prices">
+                              <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                              <s class="cart-item__old-price product-option">{{- item.original_price | money -}}</s>
+                              <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+                              <strong class="cart-item__final-price product-option">{{ item.final_price | money }}</strong>
+                            </div>
+                          {%- else -%}
+                            <div class="product-option">{{ item.original_price | money }}</div>
+                          {%- endif -%}
+                          {%- if item.product.has_only_default_variant == false
+                            or item.properties.size != 0
+                            or item.selling_plan_allocation != null
+                          -%}
+                            <dl>
+                              {%- if item.product.has_only_default_variant == false -%}
+                                {%- for option in item.options_with_values -%}
+                                  <div class="product-option">
+                                    <dt>{{ option.name }}:</dt>
+                                    <dd>{{ option.value -}}{%- unless forloop.last %}, {% endunless %}</dd>
+                                  </div>
+                                {%- endfor -%}
+                              {%- endif -%}
+                              {%- for property in item.properties -%}
+                                {%- assign property_first_char = property.first | slice: 0 -%}
+                                {%- if property.last != blank and property_first_char != '_' -%}
+                                  <div class="product-option">
+                                    <dt>{{ property.first }}:</dt>
+                                    <dd>
+                                      {%- if property.last contains '/uploads/' -%}
+                                        <a href="{{ property.last }}" class="link" target="_blank" aria-describedby="a11y-new-window-message">
+                                          {{ property.last | split: '/' | last }}
+                                        </a>
+                                      {%- else -%}
+                                        {{ property.last }}
+                                      {%- endif -%}
+                                    </dd>
+                                  </div>
+                                {%- endif -%}
+                              {%- endfor -%}
+                            </dl>
+                            <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                          {%- endif -%}
+                          <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                            {%- for discount in item.line_level_discount_allocations -%}
+                              <li class="discounts__discount">
+                                {{- 'icon-discount.svg' | inline_asset_content -}}
+                                {{ discount.discount_application.title }}
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </td>
+                        <td class="cart-item__totals right" role="cell" headers="CartDrawer-ColumnTotal">
+                          {%- render 'loading-spinner' -%}
+                          <div class="cart-item__price-wrapper">
+                            {%- if item.original_line_price != item.final_line_price -%}
+                              <div class="cart-item__discounted-prices">
+                                <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                                <s class="cart-item__old-price price price--end">{{ item.original_line_price | money }}</s>
+                                <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+                                <span class="price price--end">{{ item.final_line_price | money }}</span>
+                              </div>
+                            {%- else -%}
+                              <span class="price price--end">{{ item.original_line_price | money }}</span>
+                            {%- endif -%}
+                            {%- if item.variant.available and item.unit_price_measurement -%}
+                              <div class="unit-price caption">
+                                <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+                                {{ item.unit_price | money }}
+                                <span aria-hidden="true">/</span>
+                                <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
+                                {%- if item.unit_price_measurement.reference_value != 1 -%}
+                                  {{- item.unit_price_measurement.reference_value -}}
+                                {%- endif -%}
+                                {{ item.unit_price_measurement.reference_unit }}
+                              </div>
+                            {%- endif -%}
+                          </div>
+                        </td>
+                        {%- liquid
+                          assign has_qty_rules = false
+                          if item.variant.quantity_rule.increment > 1 or item.variant.quantity_rule.min > 1 or item.variant.quantity_rule.max != null
+                            assign has_qty_rules = true
+                          endif
+                          assign has_vol_pricing = false
+                          if item.variant.quantity_price_breaks.size > 0
+                            assign has_vol_pricing = true
+                          endif
+                        -%}
+                        <td
+                          class="cart-item__quantity{% if has_qty_rules or has_vol_pricing %} cart-item__quantity--info{% endif %}"
+                          role="cell"
+                          headers="CartDrawer-ColumnQuantity"
+                        >
+                          <quantity-popover>
+                            <div class="cart-item__quantity-wrapper quantity-popover-wrapper">
+                              <div class="quantity-popover-container{% if has_qty_rules or has_vol_pricing %} quantity-popover-container--hover{% endif %}">
+                                <quantity-input class="quantity cart-quantity">
+                                  <button class="quantity__button" name="minus" type="button">
+                                    <span class="visually-hidden">
+                                      {{- 'products.product.quantity.decrease' | t: product: item.product.title | escape -}}
+                                    </span>
+                                    <span class="svg-wrapper">{{- 'icon-minus.svg' | inline_asset_content -}}</span>
+                                  </button>
+                                  <input
+                                    class="quantity__input"
+                                    type="number"
+                                    data-quantity-variant-id="{{ item.variant.id }}"
+                                    name="updates[]"
+                                    value="{{ item.quantity }}"
+                                    {% # theme-check-disable %}
+                                    data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
+                                    min="0"
+                                    data-min="{{ item.variant.quantity_rule.min }}"
+                                    {% if item.variant.quantity_rule.max != null %}
+                                      max="{{ item.variant.quantity_rule.max }}"
+                                    {% endif %}
+                                    step="{{ item.variant.quantity_rule.increment }}"
+                                    {% # theme-check-enable %}
+                                    aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                                    id="Drawer-quantity-{{ item.index | plus: 1 }}"
+                                    data-index="{{ item.index | plus: 1 }}"
+                                  >
+                                  <button class="quantity__button" name="plus" type="button">
+                                    <span class="visually-hidden">
+                                      {{- 'products.product.quantity.increase' | t: product: item.product.title | escape -}}
+                                    </span>
+                                    <span class="svg-wrapper">{{- 'icon-plus.svg' | inline_asset_content -}}</span>
+                                  </button>
+                                </quantity-input>
+                              </div>
+                              <cart-remove-button
+                                id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
+                                data-index="{{ item.index | plus: 1 }}"
+                              >
+                                <button
+                                  type="button"
+                                  class="button button--tertiary cart-remove-button"
+                                  aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}"
+                                  data-variant-id="{{ item.variant.id }}"
+                                >
+                                  <span class="svg-wrapper">{{- 'icon-remove.svg' | inline_asset_content -}}</span>
+                                </button>
+                              </cart-remove-button>
+                            </div>
+                            {%- if has_qty_rules or has_vol_pricing -%}
+                              <button
+                                type="button"
+                                class="quantity-popover__info-button quantity-popover__info-button--icon-with-label button button--tertiary"
+                                aria-expanded="false"
+                              >
+                                <span class="svg-wrapper">{{- 'icon-info.svg' | inline_asset_content -}}</span>
+                                <span>
+                                  {%- if has_vol_pricing -%}{{ 'products.product.volume_pricing.note' | t }}
+                                  {%- elsif has_qty_rules -%}{{ 'products.product.quantity.note' | t }}
+                                  {%- endif -%}
+                                </span>
+                              </button>
+                            {%- endif -%}
+                            {%- if has_vol_pricing or has_qty_rules -%}
+                              <div class="cart-items__info global-settings-popup quantity-popover__info" tabindex="-1" hidden>
+                                {%- if has_qty_rules == false -%}
+                                  <span class="volume-pricing-label caption">
+                                    {{- 'products.product.volume_pricing.title' | t -}}
+                                  </span>
+                                {%- endif -%}
+                                <div class="quantity__rules caption">
+                                  {%- if item.variant.quantity_rule.increment > 1 -%}
+                                    <span class="divider">
+                                      {{- 'products.product.quantity.multiples_of' | t: quantity: item.variant.quantity_rule.increment -}}
+                                    </span>
+                                  {%- endif -%}
+                                  {%- if item.variant.quantity_rule.min > 1 -%}
+                                    <span class="divider">
+                                      {{- 'products.product.quantity.min_of' | t: quantity: item.variant.quantity_rule.min -}}
+                                    </span>
+                                  {%- endif -%}
+                                  {%- if item.variant.quantity_rule.max != null -%}
+                                    <span class="divider">
+                                      {{- 'products.product.quantity.max_of' | t: quantity: item.variant.quantity_rule.max -}}
+                                    </span>
+                                  {%- endif -%}
+                                </div>
+                                <button
+                                  class="button-close button button--tertiary"
+                                  type="button"
+                                  aria-label="{{ 'accessibility.close' | t }}"
+                                >
+                                  <span class="svg-wrapper">{{- 'icon-close.svg' | inline_asset_content -}}</span>
+                                </button>
+                                {%- if item.variant.quantity_price_breaks.size > 0 -%}
+                                  <volume-pricing class="parent-display">
+                                    <ul class="list-unstyled">
+                                      <li>
+                                        <span>{{ item.variant.quantity_rule.min }}+</span>
+                                        <span>{{ item.variant.price | money_with_currency }}/ea</span>
+                                      </li>
+                                      {%- for price_break in item.variant.quantity_price_breaks -%}
+                                        <li>
+                                          <span>{{- price_break.minimum_quantity -}}<span aria-hidden="true">+</span></span>
+                                          <span>{{ price_break.price | money_with_currency }}/ea</span>
+                                        </li>
+                                      {%- endfor -%}
+                                    </ul>
+                                  </volume-pricing>
+                                {%- endif -%}
+                              </div>
+                            {%- endif -%}
+                            <div
+                              id="CartDrawer-LineItemError-{{ item.index | plus: 1 }}"
+                              class="cart-item__error"
+                              role="alert"
+                            >
+                              <small class="cart-item__error-text"></small>
+                              <span class="svg-wrapper">{{- 'icon-error.svg' | inline_asset_content -}}</span>
+                            </div>
+                          </quantity-popover>
+                        </td>
+                      </tr>
+                    {%- endfor -%}
+                  </tbody>
+                </table>
+              </div>
+            {%- endif -%}
+            <p id="CartDrawer-LiveRegionText" class="visually-hidden" role="status"></p>
+            <p id="CartDrawer-LineItemStatus" class="visually-hidden" aria-hidden="true" role="status">
+              {{ 'accessibility.loading' | t }}
+            </p>
+          </div>
+          <div id="CartDrawer-CartErrors" role="alert"></div>
+        </form>
+      </cart-drawer-items>
+
+      <div class="drawer__footer">
+        {%- if settings.show_cart_note -%}
+          <details id="Details-CartDrawer">
+            <summary>
+              <span class="summary__title">
+                {{ 'sections.cart.note' | t }}
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </span>
+            </summary>
+            <cart-note class="cart__note field">
+              <label class="visually-hidden" for="CartDrawer-Note">{{ 'sections.cart.note' | t }}</label>
+              <textarea
+                id="CartDrawer-Note"
+                class="text-area text-area--resize-vertical field__input"
+                name="note"
+                placeholder="{{ 'sections.cart.note' | t }}"
+              >{{ cart.note }}</textarea>
+            </cart-note>
+          </details>
+        {%- endif -%}
+
+        <div class="cart-drawer__footer" {{ block.shopify_attributes }}>
+          <div class="essential-upsell-cross-sell-block"></div>
+          <div>
+            {%- if cart.cart_level_discount_applications.size > 0 -%}
+              <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                {%- for discount in cart.cart_level_discount_applications -%}
+                  <li class="discounts__discount discounts__discount--end">
+                    {{- 'icon-discount.svg' | inline_asset_content -}}
+                    {{ discount.title | escape }}
+                    (-{{ discount.total_allocated_amount | money }})
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
+          <div class="totals" role="status">
+            <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
+            <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+          </div>
+          <small class="tax-note caption-large rte">
+            {%- if cart.duties_included and cart.taxes_included -%}
+              {%- if shop.shipping_policy.body == blank -%}
+                {{ 'sections.cart.duties_and_taxes_included_shipping_at_checkout_without_policy' | t }}
+              {%- else -%}
+                {{ 'sections.cart.duties_and_taxes_included_shipping_at_checkout_with_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- endif -%}
+            {%- elsif cart.duties_included == false and cart.taxes_included -%}
+              {%- if shop.shipping_policy.body == blank -%}
+                {{ 'sections.cart.taxes_included_shipping_at_checkout_without_policy' | t }}
+              {%- else -%}
+                {{ 'sections.cart.taxes_included_shipping_at_checkout_with_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- endif -%}
+            {%- elsif cart.duties_included and cart.taxes_included == false -%}
+              {%- if shop.shipping_policy.body == blank -%}
+                {{ 'sections.cart.duties_included_taxes_at_checkout_shipping_at_checkout_without_policy' | t }}
+              {%- else -%}
+                {{ 'sections.cart.duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- endif -%}
+            {%- elsif cart.duties_included == false and cart.taxes_included == false -%}
+              {%- if shop.shipping_policy.body == blank -%}
+                {{ 'sections.cart.taxes_at_checkout_shipping_at_checkout_without_policy' | t }}
+              {%- else -%}
+                {{ 'sections.cart.taxes_at_checkout_shipping_at_checkout_with_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- endif -%}
+            {%- endif -%}
+          </small>
+        </div>
+
+        <!-- CTAs -->
+        <div class="cart__ctas" {{ block.shopify_attributes }}>
+          <button
+            type="button"
+            id="CartDrawer-CheckoutTrigger"
+            class="cart__checkout-button button"
+            {% if cart == empty %}disabled{% endif %}
+          >
+            {{ 'sections.cart.checkout' | t }}
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</cart-drawer>
+
+<!-- ==================== UPSELL POPUP ==================== -->
+<div class="upsell-popup-overlay" id="upsell-popup-overlay">
+  <div class="upsell-popup" id="upsell-popup">
+    <button class="upsell-popup__close" id="upsell-popup-close">&#10005;</button>
+    <h3 class="upsell-popup__heading">✨ Complete Your Order</h3>
+    <p class="upsell-popup__subheading">Customers also love these with their order</p>
+
+    <!-- Scrollable products wrapper -->
+    <div class="upsell-popup__products-wrapper" id="upsell-popup-products-wrapper">
+      <div class="upsell-popup__products" id="upsell-popup-products">
+        <div class="upsell-popup__loading">Loading recommendations...</div>
+      </div>
+    </div>
+
+    <!-- Scroll hint — hidden when ≤3 products load -->
+    <p class="upsell-popup__scroll-hint" id="upsell-scroll-hint" style="display:none;">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 2v8M3 7l3 3 3-3" stroke="#bbb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Scroll to see more
+    </p>
+
+    <!-- Footer buttons — always visible -->
+    <div class="upsell-popup__footer">
+      <button class="upsell-popup__checkout-btn" id="upsell-proceed-checkout">
+        Proceed to Checkout →
+      </button>
+      <button class="upsell-popup__skip" id="upsell-skip">
+        No thanks, skip this step
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ==================== CART DRAWER CLOSE LOGIC ====================
+  document.addEventListener('DOMContentLoaded', function () {
+    var cartDrawer      = document.querySelector('cart-drawer');
+    var cartDrawerInner = document.querySelector('.drawer__inner');
+
+    if (cartDrawer) {
+      cartDrawer.addEventListener('click', function (e) {
+        if (e.target === cartDrawer || e.target.classList.contains('cart-drawer__overlay')) {
+          cartDrawer.close();
+        }
+      });
+      if (cartDrawerInner) {
+        cartDrawerInner.addEventListener('click', function (e) { e.stopPropagation(); });
+      }
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        var overlay = document.getElementById('upsell-popup-overlay');
+        if (overlay && overlay.classList.contains('active')) {
+          closeUpsellPopup();
+        } else if (cartDrawer && cartDrawer.hasAttribute('open')) {
+          cartDrawer.close();
+        }
+      }
+    });
+  });
+
+  // ==================== UPSELL POPUP ====================
+  var upsellLoaded = false;
+  var upsellCheckoutInitiated = false;
+
+  // Event delegation — works even after cart drawer re-renders
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.closest('#CartDrawer-CheckoutTrigger')) {
+      openUpsellPopup(); return;
+    }
+    if (e.target && e.target.closest('#upsell-popup-close')) {
+      closeUpsellPopup(); return;
+    }
+    if (e.target && e.target.closest('#upsell-skip')) {
+      proceedToCheckout(); return;
+    }
+    if (e.target && e.target.closest('#upsell-proceed-checkout')) {
+      proceedToCheckout(); return;
+    }
+    if (e.target && e.target.id === 'upsell-popup-overlay') {
+      closeUpsellPopup(); return;
+    }
+    var addBtn = e.target && e.target.closest('.upsell-popup__add-btn');
+    if (addBtn && !addBtn.disabled) {
+      addUpsellProduct(addBtn); return;
+    }
+  });
+
+  function openUpsellPopup() {
+    var overlay = document.getElementById('upsell-popup-overlay');
+    if (!overlay) return;
+
+    // Reset if user returned (products container empty or never loaded)
+    var productsEl = document.getElementById('upsell-popup-products');
+    var hasProducts = productsEl && productsEl.querySelector('.upsell-popup__product-item');
+    if (!hasProducts) {
+      upsellLoaded = false;
+      upsellCheckoutInitiated = false;
+      if (productsEl) productsEl.innerHTML = '<div class="upsell-popup__loading">Loading recommendations...</div>';
+      var hint = document.getElementById('upsell-scroll-hint');
+      if (hint) hint.style.display = 'none';
+    }
+
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    if (!upsellLoaded) loadUpsellRecommendations();
+  }
+
+  function closeUpsellPopup() {
+    var overlay = document.getElementById('upsell-popup-overlay');
+    if (!overlay) return;
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function proceedToCheckout() {
+    closeUpsellPopup();
+    upsellCheckoutInitiated = true;
+    upsellLoaded = false; // reset so popup reloads fresh on next open
+    window.location.href = '/checkout';
+  }
+
+  function formatUpsellMoney(cents) {
+    if (window.Shopify && window.Shopify.formatMoney) {
+      return window.Shopify.formatMoney(cents);
+    }
+    return '৳' + Math.round(cents / 100);
+  }
+
+  // ==================== SCROLL HINT / FADE LOGIC ====================
+  function initScrollBehavior(productsEl, wrapper, count) {
+    var hint = document.getElementById('upsell-scroll-hint');
+
+    // Show hint only when more than 3 products
+    if (count > 3) {
+      if (hint) hint.style.display = 'flex';
+    } else {
+      if (hint) hint.style.display = 'none';
+      if (wrapper) wrapper.classList.add('at-bottom'); // no fade needed
+    }
+
+    // Track scroll to toggle bottom fade
+    if (productsEl && wrapper) {
+      productsEl.addEventListener('scroll', function () {
+        var atBottom = productsEl.scrollTop + productsEl.clientHeight >= productsEl.scrollHeight - 8;
+        if (atBottom) {
+          wrapper.classList.add('at-bottom');
+          if (hint) hint.style.display = 'none'; // hide hint once user has scrolled
+        } else {
+          wrapper.classList.remove('at-bottom');
+        }
+      }, { passive: true });
+    }
+  }
+
+  // ==================== LOAD RECOMMENDATIONS ====================
+  function loadUpsellRecommendations() {
+    var productsEl = document.getElementById('upsell-popup-products');
+    if (!productsEl) return;
+
+    fetch('/cart.js')
+      .then(function (r) { return r.json(); })
+      .then(function (cart) {
+        if (!cart.items || cart.items.length === 0) {
+          productsEl.innerHTML = '<p style="text-align:center;color:#bbb;font-size:13px;padding:20px 0;">No recommendations available.</p>';
+          return;
+        }
+        var baseProductId  = cart.items[0].product_id;
+        var cartProductIds = cart.items.map(function (i) { return String(i.product_id); });
+        var cartVariantIds = cart.items.map(function (i) { return String(i.variant_id); });
+
+        // Fetch up to 10 related products
+        fetch('/recommendations/products.json?product_id=' + baseProductId + '&limit=10&intent=related')
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            var recs = data.products || [];
+            recs = filterRecs(recs, cartProductIds, cartVariantIds, 10);
+
+            if (recs.length === 0) {
+              // fallback to complementary
+              return fetch('/recommendations/products.json?product_id=' + baseProductId + '&limit=10&intent=complementary')
+                .then(function (r) { return r.json(); })
+                .then(function (data2) {
+                  recs = filterRecs(data2.products || [], cartProductIds, cartVariantIds, 10);
+                  return fetchFullProducts(recs);
+                });
+            }
+            return fetchFullProducts(recs);
+          })
+          .catch(function () {
+            var el = document.getElementById('upsell-popup-products');
+            if (el) el.innerHTML = '<p style="text-align:center;color:#bbb;font-size:13px;padding:20px 0;">Could not load recommendations.</p>';
+          });
+      })
+      .catch(function () {
+        var el = document.getElementById('upsell-popup-products');
+        if (el) el.innerHTML = '<p style="text-align:center;color:#bbb;font-size:13px;padding:20px 0;">Could not load cart data.</p>';
+      });
+  }
+
+  function filterRecs(products, cartProductIds, cartVariantIds, limit) {
+    return (products || []).filter(function (p) {
+      return p.available
+        && cartProductIds.indexOf(String(p.id)) === -1
+        && p.variants && p.variants[0]
+        && cartVariantIds.indexOf(String(p.variants[0].id)) === -1;
+    }).slice(0, limit);
+  }
+
+  // Fetch each product via /products/{handle}.js for reliable image data
+  function fetchFullProducts(recs) {
+    if (!recs || recs.length === 0) {
+      renderUpsellProducts([]);
+      upsellLoaded = true;
+      return;
+    }
+    var promises = recs.map(function (p) {
+      return fetch('/products/' + p.handle + '.js')
+        .then(function (r) { return r.json(); })
+        .catch(function () { return p; });
+    });
+    Promise.all(promises).then(function (fullProducts) {
+      renderUpsellProducts(fullProducts);
+      upsellLoaded = true;
+    });
+  }
+
+  function renderUpsellProducts(products) {
+    var productsEl = document.getElementById('upsell-popup-products');
+    var wrapper    = document.getElementById('upsell-popup-products-wrapper');
+    if (!productsEl) return;
+
+    if (!products || products.length === 0) {
+      productsEl.innerHTML = '<p style="text-align:center;color:#bbb;font-size:13px;padding:20px 0;">No recommendations available.</p>';
+      return;
+    }
+
+    productsEl.innerHTML = products.map(function (p) {
+      var v           = p.variants[0];
+      var priceHtml   = formatUpsellMoney(v.price);
+      var compareHtml = (v.compare_at_price && v.compare_at_price > v.price)
+        ? '<span class="upsell-popup__product-compare">' + formatUpsellMoney(v.compare_at_price) + '</span>'
+        : '';
+
+      var imgSrc = '';
+      if (p.featured_image) {
+        imgSrc = (typeof p.featured_image === 'string') ? p.featured_image : (p.featured_image.src || '');
+      }
+      if (!imgSrc && p.images && p.images.length > 0) {
+        var fi = p.images[0];
+        imgSrc = (typeof fi === 'string') ? fi : (fi.src || '');
+      }
+      if (imgSrc && imgSrc.indexOf('//') === 0) imgSrc = 'https:' + imgSrc;
+      var imgTag = imgSrc
+        ? '<img class="upsell-popup__product-img" src="' + imgSrc + '" alt="' + p.title.replace(/"/g, '&quot;') + '" loading="lazy">'
+        : '<div class="upsell-popup__product-img" style="background:#f0f0f0;border-radius:6px;width:56px;height:56px;flex-shrink:0;"></div>';
+
+      return [
+        '<div class="upsell-popup__product-item">',
+          imgTag,
+          '<div class="upsell-popup__product-info">',
+            '<span class="upsell-popup__product-title">' + p.title + '</span>',
+            '<div class="upsell-popup__product-price-row">',
+              '<span class="upsell-popup__product-price">' + priceHtml + '</span>',
+              compareHtml,
+            '</div>',
+          '</div>',
+          '<button class="upsell-popup__add-btn" data-variant-id="' + v.id + '">',
+            '<span class="upsell-plus-icon">+</span> Add',
+          '</button>',
+        '</div>'
+      ].join('');
+    }).join('');
+
+    // Init scroll hint & fade after rendering
+    initScrollBehavior(productsEl, wrapper, products.length);
+  }
+
+  function addUpsellProduct(btn) {
+    var variantId   = btn.getAttribute('data-variant-id');
+    btn.disabled    = true;
+    btn.innerHTML   = '...';
+
+    fetch('/cart/add.js', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ id: variantId, quantity: 1 })
+    })
+    .then(function (r) { return r.json(); })
+    .then(function () {
+      btn.innerHTML = '✓ Added';
+      btn.classList.add('added');
+      upsellLoaded = false;
+
+      fetch('/?section_id=cart-drawer')
+        .then(function (r) { return r.text(); })
+        .then(function (html) {
+          var doc     = new DOMParser().parseFromString(html, 'text/html');
+          var newCart = doc.querySelector('#CartDrawer');
+          var curCart = document.querySelector('#CartDrawer');
+          if (newCart && curCart) curCart.innerHTML = newCart.innerHTML;
+        })
+        .catch(function () {});
+    })
+    .catch(function () {
+      btn.innerHTML = '<span class="upsell-plus-icon">+</span> Add';
+      btn.disabled  = false;
+      btn.classList.remove('added');
+    });
+  }
+</script>
