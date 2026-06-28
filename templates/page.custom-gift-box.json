@@ -11,130 +11,115 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
       }
     },
-    "gift_box_builder_wbbM39": {
+    "gift_box_builder_AXL9qJ": {
       "type": "gift-box-builder",
       "blocks": {
-        "collection_Nhf4Hf": {
-          "type": "collection",
-          "settings": {
-            "collection": "all",
-            "custom_name": ""
-          }
-        },
-        "collection_hNkVVx": {
+        "collection_AnUaDp": {
           "type": "collection",
           "settings": {
             "collection": "all-gifts",
-            "custom_name": "Ready Gift"
-          }
-        },
-        "collection_HxHVMN": {
-          "type": "collection",
-          "settings": {
-            "collection": "mugs",
             "custom_name": ""
           }
         },
-        "collection_n9MWt7": {
+        "collection_VBqgpW": {
           "type": "collection",
           "settings": {
-            "collection": "notebooks",
+            "collection": "stationeries",
             "custom_name": ""
           }
         },
-        "collection_BM6Uqc": {
-          "type": "collection",
-          "settings": {
-            "collection": "fragrances",
-            "custom_name": ""
-          }
-        },
-        "collection_DHaFVU": {
-          "type": "collection",
-          "settings": {
-            "collection": "bespoke",
-            "custom_name": ""
-          }
-        },
-        "collection_DkGVmW": {
-          "type": "collection",
-          "settings": {
-            "collection": "journals",
-            "custom_name": ""
-          }
-        },
-        "collection_8CFXeM": {
+        "collection_4y3ypY": {
           "type": "collection",
           "settings": {
             "collection": "cards",
             "custom_name": ""
           }
         },
-        "collection_CYfUTH": {
+        "collection_APcpyj": {
           "type": "collection",
           "settings": {
-            "collection": "foods",
+            "collection": "mugs",
             "custom_name": ""
           }
         },
-        "collection_RgYkP7": {
+        "collection_rHVNUz": {
           "type": "collection",
           "settings": {
             "collection": "essentials",
             "custom_name": ""
           }
         },
-        "collection_hyk999": {
+        "collection_q4mQA8": {
           "type": "collection",
           "settings": {
-            "collection": "panjabi",
+            "collection": "prayer-mat",
             "custom_name": ""
           }
         },
-        "collection_WGDnLy": {
+        "collection_MDkAHg": {
           "type": "collection",
           "settings": {
-            "collection": "thobe",
-            "custom_name": ""
-          }
-        },
-        "collection_hwHwpx": {
-          "type": "collection",
-          "settings": {
-            "collection": "academic",
-            "custom_name": ""
-          }
-        },
-        "collection_A3UNL9": {
-          "type": "collection",
-          "settings": {
-            "collection": "frames",
+            "collection": "lifestyle",
             "custom_name": ""
           }
         }
       },
       "block_order": [
-        "collection_Nhf4Hf",
-        "collection_hNkVVx",
-        "collection_HxHVMN",
-        "collection_n9MWt7",
-        "collection_BM6Uqc",
-        "collection_DHaFVU",
-        "collection_DkGVmW",
-        "collection_8CFXeM",
-        "collection_CYfUTH",
-        "collection_RgYkP7",
-        "collection_hyk999",
-        "collection_WGDnLy",
-        "collection_hwHwpx",
-        "collection_A3UNL9"
+        "collection_AnUaDp",
+        "collection_VBqgpW",
+        "collection_4y3ypY",
+        "collection_APcpyj",
+        "collection_rHVNUz",
+        "collection_q4mQA8",
+        "collection_MDkAHg"
       ],
-      "name": "Custom Gift Box",
+      "name": "Custom Gift Box  v2",
       "settings": {
         "main_title": "Build Your Custom Gift Box",
         "main_subtitle": "Create the perfect personalized gift by selecting your favorite products"
@@ -143,6 +128,6 @@
   },
   "order": [
     "main",
-    "gift_box_builder_wbbM39"
+    "gift_box_builder_AXL9qJ"
   ]
 }

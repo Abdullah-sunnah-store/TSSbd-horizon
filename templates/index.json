@@ -9,488 +9,1816 @@
  */
 {
   "sections": {
-    "custom_banner_section_XKBJbD": {
-      "type": "custom-banner-section",
-      "name": "Custom Banner Section",
-      "settings": {
-        "media_type": "image",
-        "invitation_image": "shopify://shop_images/website_homepage_img_19d2ab1c-b99d-4f3b-bca8-f81040b50930.jpg",
-        "image_alt": "Nikah Wedding Invitation",
-        "invitation_image_mobile": "shopify://shop_images/mobile_homepage_img_6301d716-d82e-445e-b33a-7daf636f9dda.jpg",
-        "image_alt_mobile": "Nikah Wedding Invitation - Mobile",
-        "invitation_video": "",
-        "video_autoplay": true,
-        "video_loop": true,
-        "video_muted": true,
-        "video_controls": false,
-        "media_link": "shopify://collections/cards",
-        "open_in_new_tab": false,
-        "title": "SPREAD YOUR DEEN.",
-        "subtitle": "<p>Everything we make, carries love, reminders and the beauty of faith.</p>",
-        "heading_color": "#fafafa",
-        "subheading_color": "#fafafa",
-        "button_text": "Order Now",
-        "button_link": "shopify://collections/cards",
-        "button_open_new_tab": false,
-        "button_bg_color": "#ffffff",
-        "button_text_color": "#121212",
-        "button_border_color": "#ffffff",
-        "button_hover_bg_color": "#ffffff",
-        "button_hover_text_color": "#121212"
-      }
-    },
-    "custom_banner_section_NAaahQ": {
-      "type": "custom-banner-section",
-      "name": "Custom Banner Section",
-      "settings": {
-        "media_type": "video",
-        "image_alt": "Nikah Wedding Invitation",
-        "image_alt_mobile": "Nikah Wedding Invitation - Mobile",
-        "invitation_video": "https://cdn.shopify.com/videos/c/o/v/575a08eaf84d4439b09a06524d56a720.mp4",
-        "video_autoplay": true,
-        "video_loop": true,
-        "video_muted": true,
-        "video_controls": true,
-        "media_link": "shopify://collections/cards",
-        "open_in_new_tab": false,
-        "title": "Heritage Calendar 2026",
-        "subtitle": "<p>From the River to the Sea<em>...</em></p>",
-        "heading_color": "#fafafa",
-        "subheading_color": "#fafafa",
-        "button_text": "Carry the Truth",
-        "button_link": "shopify://collections/cards",
-        "button_open_new_tab": false,
-        "button_bg_color": "#ffffffe6",
-        "button_text_color": "#000000",
-        "button_border_color": "#ffffff4d",
-        "button_hover_bg_color": "#ffffff",
-        "button_hover_text_color": "#000000"
-      }
-    },
-    "custom_product_showcase_zdk4Ba": {
-      "type": "custom-product-showcase",
+    "hero_jVaWmY": {
+      "type": "hero",
       "blocks": {
-        "product_gFDRxV": {
-          "type": "product",
+        "custom_liquid_gi3n9k": {
+          "type": "custom-liquid",
+          "name": "t:names.custom_liquid",
           "settings": {
-            "product_image": "shopify://shop_images/Love_Mercy_Mug-1.jpg",
-            "product_title": "Explore Mugs",
-            "product_description": "",
-            "product_link": "shopify://pages/mug",
-            "cta_text": "Shop Now",
-            "cta_link": ""
-          }
+            "custom_liquid": "<h2>Beauty That   <br>Reminds You of <span style=\"color: #FFFFFF; font-style: italic;\">Allah</span>  </h2>"
+          },
+          "blocks": {}
         },
-        "product_3zk3EQ": {
-          "type": "product",
+        "text_YLPk4p": {
+          "type": "text",
+          "name": "t:names.heading",
+          "disabled": true,
           "settings": {
-            "product_image": "shopify://shop_images/Dua_Jar_1.jpg",
-            "product_title": "Shop Dua Card",
-            "product_description": "",
-            "product_link": "shopify://collections/dua-cards",
-            "cta_text": "Shop Now",
-            "cta_link": ""
-          }
+            "text": "<p>For Every <br/><em>Soul</em> You Love</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
-        "product_wGfhXP": {
-          "type": "product",
+        "text_8LwTBC": {
+          "type": "text",
+          "name": "t:names.text",
           "settings": {
-            "product_image": "shopify://shop_images/Grow_Through_What_you_go_through_Gold_Foiled_Notebook-1_1.jpg",
-            "product_title": "Start Writing",
-            "product_description": "",
-            "product_link": "shopify://collections/notebooks",
-            "cta_text": "Shop Now",
-            "cta_link": ""
-          }
+            "text": "<p>Surround your home with Qur’anic verses, calligraphy, and meaningful pieces that inspire the heart.</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
-        "product_rWp7C8": {
-          "type": "product",
+        "button_H9gpTf": {
+          "type": "button",
+          "name": "t:names.button",
           "settings": {
-            "product_image": "shopify://shop_images/Ayatul-Kursi-2-Metal-Frame_041cb9dc-1b05-4852-9524-0d8bf4f19607.webp",
-            "product_title": "Browse Frames",
-            "product_description": "",
-            "product_link": "shopify://collections/frames",
-            "cta_text": "Shop Now",
-            "cta_link": ""
-          }
+            "label": "Shop all ➝",
+            "link": "shopify://collections/frames",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        },
+        "custom_liquid_h4d9pF": {
+          "type": "custom-liquid",
+          "name": "t:names.custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<style>\n  .ai-disclaimer {\n    position: absolute;\n    bottom: 5px;\n    right: 0%;\n    transform: translateX(10%);\n    color: rgba(255, 255, 255, 0.8);\n    font-size: 11px;\n    text-align: center;\n    white-space: nowrap;\n    z-index: 10;\n  }\n@media (max-width: 769px) {\n.ai-disclaimer {\n    right: 20px;}\n}\n</style>\n\n<p class=\"ai-disclaimer\">Disclaimer: This content was generated by AI</p>"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "product_gFDRxV",
-        "product_3zk3EQ",
-        "product_wGfhXP",
-        "product_rWp7C8"
+        "custom_liquid_gi3n9k",
+        "text_YLPk4p",
+        "text_8LwTBC",
+        "button_H9gpTf",
+        "custom_liquid_h4d9pF"
       ],
-      "name": "Product Showcase",
+      "name": "t:names.hero",
       "settings": {
-        "section_title": "",
-        "desktop_columns": "4",
-        "background_color": "#fafafa",
-        "title_color": "#333333",
-        "text_color": "#333333",
-        "description_color": "#666666",
-        "button_color": "#007bff",
-        "button_text_color": "#ffffff",
-        "button_hover_color": "#0056b3"
-      }
-    },
-    "custom_banner_section_j3fdrU": {
-      "type": "custom-banner-section",
-      "name": "Custom Banner Section",
-      "settings": {
-        "media_type": "image",
-        "invitation_image": "shopify://shop_images/Black_Cover_for_Web.jpg",
-        "image_alt": "Nikah Wedding Invitation",
-        "invitation_image_mobile": "shopify://shop_images/Black_Cover_for_Web-_Mobile.jpg",
-        "image_alt_mobile": "Nikah Wedding Invitation - Mobile",
-        "invitation_video": "",
-        "video_autoplay": true,
-        "video_loop": true,
-        "video_muted": true,
-        "video_controls": false,
-        "media_link": "shopify://collections/all-gifts",
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/Frame_Banner_Image_for_Website.png",
+        "media_type_2": "video",
+        "image_2": "shopify://shop_images/For_her_package_Banner.jpg",
+        "stack_media_on_mobile": true,
+        "custom_mobile_media": true,
+        "media_type_1_mobile": "image",
+        "image_1_mobile": "shopify://shop_images/Frame_Banner_Image_for_Website_-_Mobile.png",
+        "media_type_2_mobile": "image",
+        "link": "shopify://collections/frames",
         "open_in_new_tab": false,
-        "title": "Gift Box",
-        "subtitle": "<p><em>Gift to grow love. (Adab al-Mufrad)</em></p>",
-        "heading_color": "#fafafa",
-        "subheading_color": "#fafafa",
-        "button_text": "Explore",
-        "button_link": "shopify://collections/all-gifts",
-        "button_open_new_tab": false,
-        "button_bg_color": "#ffffffe6",
-        "button_text_color": "#000000",
-        "button_border_color": "#ffffff4d",
-        "button_hover_bg_color": "#ffffff",
-        "button_hover_text_color": "#000000"
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "flex-end",
+        "align_baseline": true,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "flex-end",
+        "gap": 20,
+        "section_width": "page-width",
+        "section_height": "full-screen",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-6",
+        "toggle_overlay": true,
+        "overlay_color": "#3d3c3c99",
+        "overlay_style": "gradient",
+        "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 0,
+        "padding-block-end": 60
       }
     },
-    "new_custom_categories_design_YGn7yP": {
-      "type": "new-custom-categories-design",
+    "occasion_carousel_T4UVCz": {
+      "type": "occasion-carousel",
       "blocks": {
-        "category_GyWfwG": {
-          "type": "category",
+        "card_nrp6cc": {
+          "type": "card",
           "settings": {
-            "category_image": "shopify://shop_images/Rizq_Mug-4.jpg",
-            "category_title": "",
-            "category_subtitle": "",
-            "cta_text": "Rizq Calligraphy",
-            "category_link": "shopify://collections/calligraphy-mugs"
+            "card_image": "shopify://shop_images/Golden_Leather_Quran_Front.png",
+            "card_label": "Hajj",
+            "card_badge": "",
+            "card_url": "shopify://collections/hajj-package",
+            "card_new_tab": false
           }
         },
-        "category_kJV6R6": {
-          "type": "category",
+        "card_LGj4Fk": {
+          "type": "card",
           "settings": {
-            "category_image": "shopify://shop_images/231351f6-Asma-Ul-Husna-Regular-2.webp",
-            "category_title": "",
-            "category_subtitle": "",
-            "cta_text": "Asma Ul Husna",
-            "category_link": "shopify://collections/calligraphy-frames"
+            "card_image": "shopify://shop_images/BlushRushBouquet.webp",
+            "card_label": "Eid",
+            "card_badge": "",
+            "card_url": "shopify://collections/eid",
+            "card_new_tab": false
           }
         },
-        "category_Y3mLb3": {
-          "type": "category",
+        "card_aMPiAD": {
+          "type": "card",
           "settings": {
-            "category_image": "shopify://shop_images/DSC8318.jpg",
-            "category_title": "",
-            "category_subtitle": "",
-            "cta_text": "Hijab",
-            "category_link": "shopify://collections/hijab"
+            "card_image": "shopify://shop_images/Ramadanpackage02.jpg",
+            "card_label": "Ramadan",
+            "card_badge": "",
+            "card_url": "shopify://collections/eid-al-adha",
+            "card_new_tab": false
           }
         },
-        "category_Pi9t9J": {
-          "type": "category",
+        "card_Ynjwhh": {
+          "type": "card",
           "settings": {
-            "category_image": "shopify://shop_images/Combo_Flat_Lay.jpg",
-            "category_title": "",
-            "category_subtitle": "",
-            "cta_text": "Deen Calendar",
-            "category_link": "shopify://collections/cards"
+            "card_image": "shopify://shop_images/Family_Tree_Series_mobile_banner_2x_caa27b66-d132-459c-8ff8-eafb9421e066.jpg",
+            "card_label": "New Baby",
+            "card_badge": "",
+            "card_url": "shopify://collections/new-baby",
+            "card_new_tab": false
           }
         },
-        "category_CwgHjk": {
-          "type": "category",
+        "card_pk3BQ6": {
+          "type": "card",
           "settings": {
-            "category_image": "shopify://shop_images/Masala_Tea-5.jpg",
-            "category_title": "",
-            "category_subtitle": "",
-            "cta_text": "Masala Tea",
-            "category_link": "shopify://collections/foods"
+            "card_image": "shopify://shop_images/e887258c-Premium-Nikah-Nama-Paper-with-Pen.webp",
+            "card_label": "Anniversary",
+            "card_badge": "",
+            "card_url": "shopify://collections/wedding-bliss",
+            "card_new_tab": false
           }
         },
-        "category_TgwtdQ": {
-          "type": "category",
+        "card_BNp7WH": {
+          "type": "card",
           "settings": {
-            "category_image": "shopify://shop_images/cf0d3933-Metal-Showpiece-SWORD-Calligraphy-DSC02193-jpg.webp",
-            "category_title": "",
-            "category_subtitle": "",
-            "cta_text": "Sword Calligraphy",
-            "category_link": "shopify://collections/showpieces"
-          }
-        },
-        "category_MDwMAE": {
-          "type": "category",
-          "settings": {
-            "category_image": "shopify://shop_images/2c6b7a0d-Spray-Perfume-DSC04362-scaled.webp",
-            "category_title": "",
-            "category_subtitle": "",
-            "cta_text": "Urban Spice",
-            "category_link": "shopify://collections/spray-perfume"
-          }
-        },
-        "category_Q9QKY8": {
-          "type": "category",
-          "settings": {
-            "category_image": "shopify://shop_images/e9b63696-Rabbana-Dua-Card-Gold-Foil-4-jpg.webp",
-            "category_title": "",
-            "category_subtitle": "",
-            "cta_text": "Rabbana Dua",
-            "category_link": "shopify://collections/dua-cards"
-          }
-        },
-        "category_dPCcEj": {
-          "type": "category",
-          "settings": {
-            "category_image": "shopify://shop_images/f205955b-Miswak-with-leather-cover-DSC03707-3-scaled-1-jpg.webp",
-            "category_title": "",
-            "category_subtitle": "",
-            "cta_text": "Miswak Cover",
-            "category_link": "shopify://collections/essentials"
-          }
-        },
-        "category_XteHxz": {
-          "type": "category",
-          "settings": {
-            "category_image": "shopify://shop_images/SHIRE-HORSEMEN-WALLET-DSC04455-jpg.webp",
-            "category_title": "",
-            "category_subtitle": "",
-            "cta_text": "Wallet",
-            "category_link": "shopify://collections/wallet"
+            "card_image": "shopify://shop_images/DSC08698_918f2d3e-3292-4b05-9196-b5bbf746c561.jpg",
+            "card_label": "Birthday",
+            "card_badge": "",
+            "card_url": "shopify://collections/birthday",
+            "card_new_tab": false
           }
         }
       },
       "block_order": [
-        "category_GyWfwG",
-        "category_kJV6R6",
-        "category_Y3mLb3",
-        "category_Pi9t9J",
-        "category_CwgHjk",
-        "category_TgwtdQ",
-        "category_MDwMAE",
-        "category_Q9QKY8",
-        "category_dPCcEj",
-        "category_XteHxz"
+        "card_nrp6cc",
+        "card_LGj4Fk",
+        "card_aMPiAD",
+        "card_Ynjwhh",
+        "card_pk3BQ6",
+        "card_BNp7WH"
       ],
-      "name": "new custom categories design",
+      "name": "Gift Category Slider",
       "settings": {
-        "heading_text": "Best seller",
-        "sub_heading_text": "",
-        "section_id": ""
+        "section_full_width": false,
+        "section_max_width": 1280,
+        "section_bg_color": "#f5f0e8",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_left": 20,
+        "padding_right": 20,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "section_title": "What's The Occasion?",
+        "title_tag": "h2",
+        "title_position": "center",
+        "title_color": "#1a1a1a",
+        "title_font_size": 48,
+        "title_letter_spacing": 0,
+        "title_line_height": 130,
+        "title_font_weight": "700",
+        "title_font_style": "'Cormorant', serif",
+        "title_gap": 24,
+        "show_nav_buttons": true,
+        "nav_position": "bottom",
+        "nav_btn_size": 38,
+        "nav_btn_radius": 50,
+        "nav_bg_color": "#ffffff",
+        "nav_border_color": "#cccccc",
+        "nav_icon_color": "#333333",
+        "show_dots": true,
+        "dot_inactive_color": "#cccccc",
+        "dot_active_color": "#333333",
+        "autoplay": true,
+        "autoplay_speed": 4,
+        "animation_speed": 400,
+        "cards_visible": 5,
+        "card_gap": 16,
+        "card_aspect_ratio": "4/5",
+        "card_bg_color": "#ffffff",
+        "card_border_width": 2,
+        "card_border_color": "#dddddd",
+        "card_hover_border_color": "#999999",
+        "card_border_radius": 10,
+        "card_image_bg": "#e0ddd8",
+        "card_hover_shadow": false,
+        "card_shadow_depth": 6,
+        "card_shadow_opacity": 18,
+        "card_hover_lift": false,
+        "card_hover_lift_px": 4,
+        "image_zoom_on_hover": true,
+        "image_zoom_scale": 104,
+        "zoom_speed": 350,
+        "card_label_style": "below",
+        "overlay_bg": "#00000061",
+        "card_label_color": "#1a1a1a",
+        "card_label_underline_color": "#1a4a3a",
+        "card_label_underline_thickness": 3,
+        "card_label_font_size": 18,
+        "card_label_weight": "700",
+        "card_label_align": "center",
+        "badge_bg": "#e53e3e",
+        "badge_text_color": "#ffffff",
+        "mobile_columns": 2,
+        "mobile_card_gap": 12,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24,
+        "mobile_padding_left": 16,
+        "mobile_padding_right": 16,
+        "mobile_title_size": 36,
+        "mobile_hide_nav": false,
+        "mobile_show_dots": true,
+        "mobile_hide_sublabel": false
       }
     },
-    "soulful_latte_blog_hXn4a7": {
-      "type": "soulful-latte-blog",
-      "name": "Soulful Latte Blog",
-      "settings": {
-        "blog": "news",
-        "posts_to_show": 4,
-        "desktop_columns": "4",
-        "section_title": "SOULFUL LATTE",
-        "section_subtitle": "faith & self-growth journal"
-      }
-    },
-    "brand_logo_slider_YignaH": {
-      "type": "brand-logo-slider",
+    "community_favourites_cjzRfY": {
+      "type": "community-favourites",
       "blocks": {
-        "logo_T9HPXY": {
-          "type": "logo",
+        "tab_EaMKWw": {
+          "type": "tab",
           "settings": {
-            "show_image": true,
-            "logo": "shopify://shop_images/Horsemen_new_logo-01.png",
-            "show_text": false,
-            "rich_text": "<p>Brand Name</p>"
+            "collection": "all-gifts",
+            "label": "",
+            "show_badge": false
           }
         },
-        "logo_amD7ge": {
-          "type": "logo",
+        "tab_397acV": {
+          "type": "tab",
           "settings": {
-            "show_image": true,
-            "logo": "shopify://shop_images/Studio_Pillars_DP.png",
-            "show_text": false,
-            "rich_text": "<p>Brand Name</p>"
+            "collection": "frames",
+            "label": "",
+            "show_badge": false
           }
         },
-        "logo_JxXrMh": {
-          "type": "logo",
+        "tab_NXACKa": {
+          "type": "tab",
           "settings": {
-            "show_image": true,
-            "logo": "shopify://shop_images/Sunnah_Academy_Logo.png",
-            "show_text": false,
-            "rich_text": "<p>Brand Name</p>"
+            "collection": "hajj-package",
+            "label": "Hajj",
+            "show_badge": false
           }
         },
-        "logo_w7zfR6": {
-          "type": "logo",
+        "tab_DfiULm": {
+          "type": "tab",
           "settings": {
-            "show_image": true,
-            "logo": "shopify://shop_images/Clean_Elegant_Typography_Brand_Logo_1.png",
-            "show_text": false,
-            "rich_text": "<p>Brand Name</p>"
-          }
-        },
-        "logo_dEWNVb": {
-          "type": "logo",
-          "settings": {
-            "show_image": true,
-            "logo": "shopify://shop_images/Horsemen_new_logo-01.png",
-            "show_text": false,
-            "rich_text": "<p>Brand Name</p>"
-          }
-        },
-        "logo_d6TFnF": {
-          "type": "logo",
-          "settings": {
-            "show_image": true,
-            "logo": "shopify://shop_images/Studio_Pillars_DP.png",
-            "show_text": false,
-            "rich_text": "<p>Brand Name</p>"
-          }
-        },
-        "logo_C8CQUN": {
-          "type": "logo",
-          "settings": {
-            "show_image": true,
-            "logo": "shopify://shop_images/Sunnah_Academy_Logo.png",
-            "show_text": false,
-            "rich_text": "<p>Brand Name</p>"
-          }
-        },
-        "logo_cm7UbY": {
-          "type": "logo",
-          "settings": {
-            "show_image": true,
-            "logo": "shopify://shop_images/Clean_Elegant_Typography_Brand_Logo_1.png",
-            "show_text": false,
-            "rich_text": "<p>Brand Name</p>"
+            "collection": "cards",
+            "label": "",
+            "show_badge": false
           }
         }
       },
       "block_order": [
-        "logo_T9HPXY",
-        "logo_amD7ge",
-        "logo_JxXrMh",
-        "logo_w7zfR6",
-        "logo_dEWNVb",
-        "logo_d6TFnF",
-        "logo_C8CQUN",
-        "logo_cm7UbY"
+        "tab_EaMKWw",
+        "tab_397acV",
+        "tab_NXACKa",
+        "tab_DfiULm"
+      ],
+      "name": "Community Favourites",
+      "settings": {
+        "section_bg": "#f5f0e8",
+        "max_width": 1400,
+        "eyebrow": "COMMUNITY FAVOURITES",
+        "eyebrow_size": 11,
+        "eyebrow_color": "#888888",
+        "heading": "Most Gifted This Season",
+        "heading_size": 36,
+        "heading_size_mobile": 26,
+        "heading_color": "#1a1a1a",
+        "heading_align": "center",
+        "head_bottom_gap": 24,
+        "show_view_all": false,
+        "view_all_text": "View All ➝",
+        "btn_font_size": 13,
+        "view_all_top_gap": 32,
+        "tab_bg": "#f5f0e8",
+        "tab_active_bg": "#2c4a3e",
+        "tab_color": "#1a1a1a",
+        "tab_active_color": "#1a1a1a",
+        "tab_border_color": "#e0dbd0",
+        "tab_radius": 12,
+        "tab_padding_h": 16,
+        "tab_gap": 8,
+        "tab_font_size": 14,
+        "icon_size": 64,
+        "tabs_bottom_gap": 24,
+        "badge_text": "NEW",
+        "badge_bg": "#c8860a",
+        "badge_color": "#ffffff",
+        "product_layout": "grid",
+        "columns": 4,
+        "columns_tablet": 2,
+        "columns_mobile": 2,
+        "products_limit_1": 4,
+        "products_limit_2": 5,
+        "product_gap": 16,
+        "card_radius": 0,
+        "vendor_color": "#888888",
+        "product_name_color": "#1a1a1a",
+        "price_color": "#b85c38",
+        "product_name_size": 15,
+        "price_size": 14,
+        "padding_top": 40,
+        "padding_bottom": 60,
+        "padding_left": 40,
+        "padding_right": 40,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40,
+        "mobile_padding_left": 20,
+        "mobile_padding_right": 20
+      }
+    },
+    "collection_list_grid_zfnXbF": {
+      "type": "collection-list-grid",
+      "blocks": {
+        "column_DzjiJR": {
+          "type": "column",
+          "settings": {
+            "parent_collection": "shop-by-occasion",
+            "fallback_title": "Shop by Occasion",
+            "column_bg": "#1a4a3a",
+            "title_color": "#ffffff",
+            "col_1": "",
+            "col_2": "eid",
+            "col_3": "eid-al-adha",
+            "col_4": "nikah",
+            "col_5": "new-baby",
+            "col_6": "graduation",
+            "col_7": "birthday",
+            "col_8": "",
+            "col_9": "",
+            "col_10": ""
+          }
+        },
+        "column_tih6TB": {
+          "type": "column",
+          "settings": {
+            "parent_collection": "shop-by-recipient",
+            "fallback_title": "shop by recipient",
+            "column_bg": "#1a4a3a",
+            "title_color": "#ffffff",
+            "col_1": "for-him",
+            "col_2": "for-her",
+            "col_3": "for-parents",
+            "col_4": "for-children",
+            "col_5": "for-the-home",
+            "col_6": "corporate",
+            "col_7": "",
+            "col_8": "",
+            "col_9": "",
+            "col_10": ""
+          }
+        },
+        "column_M3pnG6": {
+          "type": "column",
+          "settings": {
+            "parent_collection": "shop-by-budget",
+            "fallback_title": "shop by budget",
+            "column_bg": "#1a4a3a",
+            "title_color": "#ffffff",
+            "col_1": "under-1-500",
+            "col_2": "1-500-5-000",
+            "col_3": "5-000-15-000",
+            "col_4": "luxury-15-000",
+            "col_5": "",
+            "col_6": "",
+            "col_7": "",
+            "col_8": "",
+            "col_9": "",
+            "col_10": ""
+          }
+        },
+        "column_dgDmfC": {
+          "type": "column",
+          "settings": {
+            "parent_collection": "category-and-interest",
+            "fallback_title": "Shop by",
+            "column_bg": "#1a4a3a",
+            "title_color": "#ffffff",
+            "col_1": "hero-gift-box",
+            "col_2": "eid-edit-2026",
+            "col_3": "",
+            "col_4": "",
+            "col_5": "",
+            "col_6": "",
+            "col_7": "",
+            "col_8": "",
+            "col_9": "",
+            "col_10": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_DzjiJR",
+        "column_tih6TB",
+        "column_M3pnG6",
+        "column_dgDmfC"
+      ],
+      "name": "Collection List Grid",
+      "settings": {
+        "columns": 4,
+        "mobile_columns": 2,
+        "phone_columns": 2,
+        "card_radius": 0,
+        "card_padding": 28,
+        "border_color": "#ffffff",
+        "border_width": 2,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_left": 40,
+        "padding_right": 40,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40,
+        "mobile_padding_left": 0,
+        "mobile_padding_right": 0,
+        "section_bg": "#f5f0e8",
+        "link_color": "#ffffff",
+        "title_font_size": 15,
+        "title_font_size_mobile": 12,
+        "title_font_weight": "700",
+        "title_transform": "none",
+        "title_font_family": "inherit",
+        "title_bottom_gap": 20,
+        "link_font_size": 14,
+        "link_font_size_mobile": 12,
+        "link_gap": 10,
+        "link_font_family": "inherit"
+      }
+    },
+    "product_list_bxfQbh": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text_WjdhcC": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<h2>{{ closest.collection.title }}</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_list_button_FW7ejE": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "View all ➝",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_list_text_WjdhcC",
+            "product_list_button_FW7ejE"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_ikbtfc": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_Q7xQkf": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "paragraph",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_Mwkm7D": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_ikbtfc",
+            "product_title_Q7xQkf",
+            "price_Mwkm7D"
+          ]
+        }
+      },
+      "name": "t:names.products_carousel",
+      "settings": {
+        "collection": "hajj-package",
+        "layout_type": "carousel",
+        "carousel_on_mobile": false,
+        "max_products": 6,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 8,
+        "rows_gap": 24,
+        "icons_style": "arrow",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 28,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "whats_new_today_LHWJya": {
+      "type": "whats-new-today",
+      "disabled": true,
+      "name": "What's New Today",
+      "settings": {
+        "collection": "hajj-package",
+        "products_to_show": 12,
+        "label": "WHAT'S NEW TODAY",
+        "subtitle": "Gifted with intention.",
+        "button_text": "SHOP NOW ➝",
+        "bg_color": "#f5f0e8",
+        "text_color": "#1a1a1a",
+        "accent_color": "#c0392b",
+        "btn_bg_color": "#000000",
+        "btn_text_color": "#ffffff",
+        "card_bg_color": "#ebebeb"
+      }
+    },
+    "sunnah_collection_cards_bcQJt9": {
+      "type": "sunnah-collection-cards",
+      "blocks": {
+        "card_FGqzdz": {
+          "type": "card",
+          "settings": {
+            "collection": "academic",
+            "fallback_title": "",
+            "icon": "shopify://shop_images/9498b8bf-DSC09451.webp",
+            "category_label": "Knowledge",
+            "category_color": "#ffffff",
+            "quote": "Islamic Books\"Convey from me, even if it is one verse.\"",
+            "card_color_top": "#1a3d2e",
+            "card_color_bottom": "#0d2019"
+          }
+        },
+        "card_VgYPQB": {
+          "type": "card",
+          "settings": {
+            "collection": "fragrances",
+            "fallback_title": "Atter",
+            "icon": "shopify://shop_images/DSC08926_2.png",
+            "category_label": "Fragrance",
+            "category_color": "#ffffff",
+            "quote": "Attar & Perfume\"The Prophet ﷺ never refused a gift of fragrance.\"",
+            "card_color_top": "#1a3d2e",
+            "card_color_bottom": "#0d2019"
+          }
+        },
+        "card_JfEE4E": {
+          "type": "card",
+          "settings": {
+            "collection": "",
+            "fallback_title": "Flower",
+            "icon": "shopify://shop_images/flower_rose.png",
+            "category_label": "Sweetness",
+            "category_color": "#ffffff",
+            "quote": "Halal Chocolates\"The Prophet ﷺ loved sweet things and honey.\"",
+            "card_color_top": "#1a3d2e",
+            "card_color_bottom": "#0d2019"
+          }
+        },
+        "card_4K6apM": {
+          "type": "card",
+          "settings": {
+            "collection": "",
+            "fallback_title": "Chocolate",
+            "icon": "shopify://shop_images/Dubai-Chocolate-Bar-Dark-Chocolate-21SQ1200.jpg",
+            "category_label": "Beauty",
+            "category_color": "#ffffff",
+            "quote": "Fresh Flowers\"Allah is beautiful and He loves beauty.\"",
+            "card_color_top": "#1a3d2e",
+            "card_color_bottom": "#0d2019"
+          }
+        }
+      },
+      "block_order": [
+        "card_FGqzdz",
+        "card_VgYPQB",
+        "card_JfEE4E",
+        "card_4K6apM"
+      ],
+      "name": "Sunnah Collection Cards",
+      "settings": {
+        "section_bg": "#f5f0e8",
+        "max_width": 1400,
+        "eyebrow": "A SUNNAH OF GIVING",
+        "eyebrow_size": 11,
+        "eyebrow_color": "#888888",
+        "heading": "Gifts That Never Age.",
+        "heading_size": 44,
+        "heading_size_mobile": 28,
+        "heading_color": "#1a1a1a",
+        "subtext": "",
+        "subtext_size": 15,
+        "subtext_color": "#555555",
+        "head_bottom_gap": 32,
+        "view_all_text": "",
+        "view_all_url": "",
+        "btn_font_size": 13,
+        "view_all_top_gap": 32,
+        "columns": 4,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "card_gap": 12,
+        "card_radius": 8,
+        "card_height": 380,
+        "card_padding": 24,
+        "card_title_color": "#ffffff",
+        "card_title_size": 20,
+        "quote_color": "#e8e0d0",
+        "quote_size": 12,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 40,
+        "padding_right": 40,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40,
+        "mobile_padding_left": 20,
+        "mobile_padding_right": 20
+      }
+    },
+    "community_favourites_F6YiA6": {
+      "type": "community-favourites",
+      "blocks": {
+        "tab_9ze9wn": {
+          "type": "tab",
+          "settings": {
+            "collection": "frames",
+            "label": "",
+            "show_badge": false
+          }
+        },
+        "tab_bdQngn": {
+          "type": "tab",
+          "settings": {
+            "collection": "cards",
+            "label": "",
+            "show_badge": false
+          }
+        },
+        "tab_KznqYf": {
+          "type": "tab",
+          "settings": {
+            "collection": "hajj-package",
+            "label": "",
+            "show_badge": false
+          }
+        },
+        "tab_JeJPYy": {
+          "type": "tab",
+          "settings": {
+            "collection": "dua-cards",
+            "label": "",
+            "show_badge": false
+          }
+        }
+      },
+      "block_order": [
+        "tab_9ze9wn",
+        "tab_bdQngn",
+        "tab_KznqYf",
+        "tab_JeJPYy"
+      ],
+      "name": "Community Favourites",
+      "settings": {
+        "section_bg": "#f5f0e8",
+        "max_width": 1400,
+        "eyebrow": "Our signature product",
+        "eyebrow_size": 11,
+        "eyebrow_color": "#888888",
+        "heading": "Sacred Walls",
+        "heading_size": 36,
+        "heading_size_mobile": 26,
+        "heading_color": "#1a1a1a",
+        "heading_align": "center",
+        "head_bottom_gap": 24,
+        "show_view_all": false,
+        "view_all_text": "View All ➝",
+        "btn_font_size": 13,
+        "view_all_top_gap": 32,
+        "tab_bg": "#f5f0e8",
+        "tab_active_bg": "#2c4a3e",
+        "tab_color": "#1a1a1a",
+        "tab_active_color": "#1a1a1a",
+        "tab_border_color": "#e0dbd0",
+        "tab_radius": 12,
+        "tab_padding_h": 16,
+        "tab_gap": 8,
+        "tab_font_size": 14,
+        "icon_size": 64,
+        "tabs_bottom_gap": 24,
+        "badge_text": "NEW",
+        "badge_bg": "#c8860a",
+        "badge_color": "#ffffff",
+        "product_layout": "featured",
+        "columns": 5,
+        "columns_tablet": 2,
+        "columns_mobile": 2,
+        "products_limit_1": 4,
+        "products_limit_2": 5,
+        "product_gap": 16,
+        "card_radius": 0,
+        "vendor_color": "#888888",
+        "product_name_color": "#1a1a1a",
+        "price_color": "#b85c38",
+        "product_name_size": 15,
+        "price_size": 14,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 40,
+        "padding_right": 40,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40,
+        "mobile_padding_left": 20,
+        "mobile_padding_right": 20
+      }
+    },
+    "section_Li6BNn": {
+      "type": "section",
+      "blocks": {
+        "group_cHA99W": {
+          "type": "group",
+          "name": "t:names.content",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 30,
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "background_image_position_mobile": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "group_YyLHh7": {
+              "type": "group",
+              "name": "t:names.text",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "center",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "background_image_position_mobile": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_TRrKJT": {
+                  "type": "text",
+                  "name": "t:names.heading",
+                  "settings": {
+                    "text": "<h2>Find Your Perfect Fit</h2>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_z7mrmn": {
+                  "type": "text",
+                  "name": "t:names.subheading",
+                  "settings": {
+                    "text": "<p>Discover the best of both worlds</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_TRrKJT",
+                "text_z7mrmn"
+              ]
+            },
+            "group_VFeyRn": {
+              "type": "group",
+              "name": "t:names.buttons",
+              "settings": {
+                "content_direction": "row",
+                "vertical_on_mobile": false,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "background_image_position_mobile": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "button_NTJJHQ": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "View all ➝",
+                    "link": "shopify://collections/family-mugs",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "width": "fit-content",
+                    "custom_width": 34,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 34
+                  },
+                  "blocks": {}
+                },
+                "button_6bkkqX": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Shop now ➝",
+                    "link": "shopify://products/the-barakah-family-set-gift-box",
+                    "open_in_new_tab": false,
+                    "style_class": "button-secondary",
+                    "width": "fit-content",
+                    "custom_width": 34,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 34
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "button_NTJJHQ",
+                "button_6bkkqX"
+              ]
+            }
+          },
+          "block_order": [
+            "group_YyLHh7",
+            "group_VFeyRn"
+          ]
+        },
+        "comparison_slider_ppdpdc": {
+          "type": "comparison-slider",
+          "name": "t:names.comparison_slider",
+          "settings": {
+            "before_image": "shopify://shop_images/Family_Tree_Series_mobile_banner_2x_3d364d88-47cd-4760-9238-464fc488a244.jpg",
+            "after_image": "shopify://shop_images/The_heads_of_the_family_-_Mug_package_-_Mobilw_Banner_-_reduced_2x_61b833e4-330f-42b7-9eeb-cd6f33beb025.jpg",
+            "slider_style": "horizontal",
+            "show_text": false,
+            "before_text": "",
+            "after_text": "",
+            "text_preset": "",
+            "text_position_horizontal": "start",
+            "text_position_vertical": "start",
+            "text_background": false,
+            "text_background_color": "#ffffff",
+            "text_corner_radius": 0,
+            "image_ratio": "landscape",
+            "width": "custom",
+            "custom_width": 65,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "group_cHA99W",
+        "comparison_slider_ppdpdc"
       ],
       "disabled": true,
-      "name": "Brand Logo Slider",
+      "name": "t:names.image_compare",
       "settings": {
-        "show_second_row": false,
-        "desktop_animation_speed": 40,
-        "mobile_animation_speed": 20,
-        "background_color": "#ffffff"
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 46,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 80,
+        "padding-block-end": 80
       }
     },
-    "hair_reviews_section_V7LAKb": {
-      "type": "hair-reviews-section",
+    "brands_discovered_JfVNnU": {
+      "type": "brands-discovered",
       "blocks": {
-        "single_image_TKtwQF": {
-          "type": "single_image",
+        "product_slot_mW9j9B": {
+          "type": "product_slot",
           "settings": {
-            "image": "shopify://shop_images/513909704_1275314494213938_5866087445118907509_n.jpg",
-            "alt_text": "",
-            "overlay_text": ""
+            "collection": "all-gifts",
+            "brand_name": "Nike",
+            "brand_badge": "NEWLY ONBOARDED",
+            "brand_location": "Dhaka, Bangladesh · Est. 2022",
+            "brand_desc": "A small studio making hand-poured candles using only natural waxes and oud-based scents — no synthetics, no alcohol.",
+            "brand_quote": "We found them at a craft fair and knew their products belonged in a Sunnah Store gift box.",
+            "brand_quote_attr": "— The Sunnah Store Curation Team",
+            "brand_cta_text": "SHOP",
+            "brand_cta_url": "shopify://collections/all-gifts"
           }
         },
-        "single_image_WnAc4D": {
-          "type": "single_image",
+        "product_slot_iaBT6c": {
+          "type": "product_slot",
           "settings": {
-            "image": "shopify://shop_images/492837589_24119093027683100_80149506766500946_n.jpg",
-            "alt_text": "",
-            "overlay_text": ""
+            "collection": "attar-for-him",
+            "brand_name": "Fresh",
+            "brand_badge": "NEWLY ONBOARDED",
+            "brand_location": "Dhaka, Bangladesh · Est. 2022",
+            "brand_desc": "A small studio making hand-poured candles using only natural waxes and oud-based scents — no synthetics, no alcohol.",
+            "brand_quote": "We found them at a craft fair and knew their products belonged in a Sunnah Store gift box.",
+            "brand_quote_attr": "— The Sunnah Store Curation Team",
+            "brand_cta_text": "",
+            "brand_cta_url": ""
           }
         },
-        "single_image_ARYDDM": {
-          "type": "single_image",
+        "product_slot_Bhann7": {
+          "type": "product_slot",
           "settings": {
-            "image": "shopify://shop_images/513681324_1275314697547251_4731433090713043911_n.jpg",
-            "alt_text": "",
-            "overlay_text": ""
+            "collection": "bags-for-him",
+            "brand_name": "Candles",
+            "brand_badge": "NEWLY ONBOARDED",
+            "brand_location": "Dhaka, Bangladesh · Est. 2022",
+            "brand_desc": "A small studio making hand-poured candles using only natural waxes and oud-based scents — no synthetics, no alcohol.",
+            "brand_quote": "We found them at a craft fair and knew their products belonged in a Sunnah Store gift box.",
+            "brand_quote_attr": "— The Sunnah Store Curation Team",
+            "brand_cta_text": "",
+            "brand_cta_url": ""
           }
         },
-        "single_image_EnWTGq": {
-          "type": "single_image",
+        "product_slot_yC3Cwy": {
+          "type": "product_slot",
           "settings": {
-            "image": "shopify://shop_images/471261726_10234641094705750_5385600285958832397_n.jpg",
-            "alt_text": "",
-            "overlay_text": ""
+            "collection": "books",
+            "brand_name": "3444444444",
+            "brand_badge": "",
+            "brand_location": "",
+            "brand_desc": "",
+            "brand_quote": "",
+            "brand_quote_attr": "",
+            "brand_cta_text": "",
+            "brand_cta_url": ""
           }
         },
-        "single_image_nx3Wak": {
-          "type": "single_image",
+        "product_slot_EQVykg": {
+          "type": "product_slot",
           "settings": {
-            "image": "shopify://shop_images/487039942_1220138912804181_4741929830682457056_n.jpg",
-            "alt_text": "",
-            "overlay_text": ""
+            "collection": "academic",
+            "brand_name": "",
+            "brand_badge": "",
+            "brand_location": "",
+            "brand_desc": "",
+            "brand_quote": "",
+            "brand_quote_attr": "",
+            "brand_cta_text": "",
+            "brand_cta_url": ""
           }
         },
-        "single_image_k4MPBE": {
-          "type": "single_image",
+        "product_slot_NANEaP": {
+          "type": "product_slot",
           "settings": {
-            "image": "shopify://shop_images/518114438_122145589154596545_6689776681352197783_n.jpg",
-            "alt_text": "",
-            "overlay_text": ""
+            "collection": "",
+            "brand_name": "",
+            "brand_badge": "",
+            "brand_location": "",
+            "brand_desc": "",
+            "brand_quote": "",
+            "brand_quote_attr": "",
+            "brand_cta_text": "",
+            "brand_cta_url": ""
+          }
+        },
+        "product_slot_grikeY": {
+          "type": "product_slot",
+          "settings": {
+            "collection": "",
+            "brand_name": "",
+            "brand_badge": "",
+            "brand_location": "",
+            "brand_desc": "",
+            "brand_quote": "",
+            "brand_quote_attr": "",
+            "brand_cta_text": "",
+            "brand_cta_url": ""
           }
         }
       },
       "block_order": [
-        "single_image_TKtwQF",
-        "single_image_WnAc4D",
-        "single_image_ARYDDM",
-        "single_image_EnWTGq",
-        "single_image_nx3Wak",
-        "single_image_k4MPBE"
+        "product_slot_mW9j9B",
+        "product_slot_iaBT6c",
+        "product_slot_Bhann7",
+        "product_slot_yC3Cwy",
+        "product_slot_EQVykg",
+        "product_slot_NANEaP",
+        "product_slot_grikeY"
       ],
-      "disabled": true,
-      "name": "Hair Reviews Section",
+      "name": "Brands Discovered",
       "settings": {
-        "title": "Real People, Real Community Reviews",
-        "subtitle": "Question? We're here for you.",
-        "button_text": "View Real Result",
-        "button_link": "shopify://pages/reviews",
-        "title_color": "#121212",
-        "text_color": "#6b7280",
-        "button_color": "#121212",
-        "button_hover_color": "#121212"
+        "eyebrow": "NEW TO THE SUNNAH STORE",
+        "heading": "Brands We Discovered This Month",
+        "heading_tag": "h2",
+        "heading_size": 36,
+        "see_all_text": "SEE ALL PARTNERS",
+        "see_all_url": "shopify://collections",
+        "brand_badge": "NEWLY ONBOARDED",
+        "brand_name": "Sugari",
+        "brand_location": "Dhaka, Bangladesh · Est. 2022",
+        "brand_desc": "A small studio making hand-poured candles using only natural waxes and oud-based scents — no synthetics, no alcohol.",
+        "brand_quote": "We found them at a craft fair and knew their products belonged in a Sunnah Store gift box.",
+        "brand_quote_attr": "— The Sunnah Store Curation Team",
+        "brand_cta_text": "SHOP THIS BRAND",
+        "brand_cta_url": "",
+        "show_brand_cta": false,
+        "atc_text": "ADD TO BASKET",
+        "section_bg": "#f5f0e4",
+        "card_bg": "#ede8da",
+        "heading_color": "#1a1a1a",
+        "text_color": "#2a3a35",
+        "accent_color": "#2b6b6e",
+        "price_color": "#b88a2e",
+        "badge_color": "#b88a2e",
+        "max_width": 1440,
+        "panel_width": 260,
+        "panel_padding": 28,
+        "product_gap": 20,
+        "border_radius": 8,
+        "img_radius": 6,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_h": 24
       }
     },
-    "corporate_gifting_header_LgqYMz": {
-      "type": "corporate-gifting-header",
-      "disabled": true,
-      "name": "Corporate Gifting Header",
+    "spotlight_P8UmjN": {
+      "type": "spotlight",
+      "blocks": {
+        "item_Ut7axa": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Website_Template.jpg",
+            "collection": "all-gifts",
+            "label": "Quran",
+            "link": "shopify://collections/holy-book"
+          }
+        },
+        "item_LYTzJU": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Garden_of_Devotion.jpg",
+            "collection": "frames",
+            "label": "Frames",
+            "link": "shopify://collections/frames"
+          }
+        },
+        "item_NAeGhx": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Energy_tea.jpg",
+            "collection": "tea",
+            "label": "Tea",
+            "link": "shopify://collections/tea"
+          }
+        },
+        "item_pkGqLW": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Dhikr_Calligraphy_Blue.jpg",
+            "collection": "mugs",
+            "label": "Mugs",
+            "link": "shopify://collections/mugs"
+          }
+        },
+        "item_AyEQUV": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Dua_jar.jpg",
+            "collection": "dua-cards",
+            "label": "Dua Card",
+            "link": "shopify://collections/dua-cards"
+          }
+        },
+        "item_YVjWhP": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Sword.jpg",
+            "collection": "showpieces",
+            "label": "Showpieces",
+            "link": "shopify://collections/showpieces"
+          }
+        },
+        "item_fWtJbm": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Oud_Jar.jpg",
+            "collection": "attar-for-her",
+            "label": "Attar",
+            "link": "shopify://collections/attar-for-him"
+          }
+        },
+        "item_fih7my": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Hijab.jpg",
+            "collection": "hijab",
+            "label": "Hijab",
+            "link": "shopify://collections/hijab"
+          }
+        },
+        "item_zBAXLx": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Dua_jar.jpg",
+            "collection": "dua-cards",
+            "label": "Dua Card",
+            "link": "shopify://collections/dua-cards"
+          }
+        },
+        "item_UWL8td": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Sword.jpg",
+            "collection": "showpieces",
+            "label": "Showpieces",
+            "link": "shopify://collections/showpieces"
+          }
+        },
+        "item_QQVMqb": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Hijab.jpg",
+            "collection": "hijab",
+            "label": "Hijab",
+            "link": "shopify://collections/hijab"
+          }
+        },
+        "item_nMkAa3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Oud_Jar.jpg",
+            "collection": "attar-for-her",
+            "label": "Attar",
+            "link": "shopify://collections/attar-for-him"
+          }
+        },
+        "item_bAyfXb": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Sword.jpg",
+            "collection": "showpieces",
+            "label": "Showpieces",
+            "link": "shopify://collections/showpieces"
+          }
+        },
+        "item_3aQCcJ": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Dua_jar.jpg",
+            "collection": "dua-cards",
+            "label": "Dua Card",
+            "link": "shopify://collections/dua-cards"
+          }
+        },
+        "item_wNQ93n": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Dhikr_Calligraphy_Blue.jpg",
+            "collection": "mugs",
+            "label": "Mugs",
+            "link": "shopify://collections/mugs"
+          }
+        },
+        "item_gikMQD": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Energy_tea.jpg",
+            "collection": "tea",
+            "label": "Tea",
+            "link": "shopify://collections/tea"
+          }
+        },
+        "item_HB3NWM": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Garden_of_Devotion.jpg",
+            "collection": "frames",
+            "label": "Frames",
+            "link": "shopify://collections/frames"
+          }
+        },
+        "item_VxKVMp": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Website_Template.jpg",
+            "collection": "all-gifts",
+            "label": "Quran",
+            "link": "shopify://collections/holy-book"
+          }
+        }
+      },
+      "block_order": [
+        "item_Ut7axa",
+        "item_LYTzJU",
+        "item_NAeGhx",
+        "item_pkGqLW",
+        "item_AyEQUV",
+        "item_YVjWhP",
+        "item_fWtJbm",
+        "item_fih7my",
+        "item_zBAXLx",
+        "item_UWL8td",
+        "item_QQVMqb",
+        "item_nMkAa3",
+        "item_bAyfXb",
+        "item_3aQCcJ",
+        "item_wNQ93n",
+        "item_gikMQD",
+        "item_HB3NWM",
+        "item_VxKVMp"
+      ],
+      "name": "Spotlight",
       "settings": {
-        "call_us_label": "CALL US",
-        "phone_number": "+8801911242132",
-        "mail_us_label": "MAIL US",
-        "email": "rashid.sunnahstore@gmail.com",
-        "main_heading": "CORPORATE GIFTING FOR YOUR COMPANY",
-        "description": "With over 5 years of experience, we specialize in corporate gifts for companies in Bangladesh. Whether your budget is BDT 999 or 9999+, we have the perfect solution for you!",
-        "background_color": "rgba(0,0,0,0)",
-        "text_color": "#333333"
+        "heading": "Spotlight",
+        "heading_tag": "h2",
+        "subheading": "Classic silhouettes and cutting-edge innovation to build your game from the ground up.",
+        "title_font_size": 48,
+        "title_font_weight": "900",
+        "subheading_font_size": 15,
+        "label_font_size": 15,
+        "label_font_weight": "500",
+        "items_per_row": 8,
+        "image_size": 100,
+        "row_gap": 20,
+        "header_spacing": 20,
+        "mobile_limit": 6,
+        "show_see_all": true,
+        "see_all_label": "SEE ALL",
+        "section_width": "custom",
+        "custom_width": 1200,
+        "color_scheme": "",
+        "padding-block-start": 80,
+        "padding-block-end": 80
+      }
+    },
+    "customer_reviews_4FJaAn": {
+      "type": "customer-reviews",
+      "blocks": {
+        "review_6x8jRy": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Femalepackage-Ai.jpg",
+            "rating": 5,
+            "review_title": "মাশাল্লাহ ,",
+            "review_text": "প্রথমে অনেক ভয়ে ছিলাম , কিন্তু তাদের প্যাকেজিং থেকে শুরু করে প্রতিটা জিনিস অনেক সুন্দর ভাবে গুছিয়ে দিয়েছে অনেক ভালো লেগেছে,",
+            "reviewer_name": "TANU & 30",
+            "review_date": "",
+            "product_name": "Shop this product",
+            "product_url": "shopify://products/hajj-package-female"
+          }
+        },
+        "review_8N8CCL": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Honey_Blackseed.jpg",
+            "rating": 5,
+            "review_title": "Perfect for Everyone",
+            "review_text": "Beautiful packaging. Excellent customer service. Highly recommended. My family got really happy seeing the gifts from Sunnah Store. Thank you.",
+            "reviewer_name": "Fariha Chowdhury",
+            "review_date": "",
+            "product_name": "Shop this product",
+            "product_url": "shopify://products/blackseed-honey"
+          }
+        },
+        "review_AktKTa": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/SlimSleeveBlack_BrownCombined.jpg",
+            "rating": 5,
+            "review_title": "I'm blown away!",
+            "review_text": "The Sunnah Store  এক কথায় অসাধারণ। তাদের প্রডাক্টের মান, তাদের কনসেপ্ট এবং তাদের সার্ভিস খুবই ভালো।",
+            "reviewer_name": "Abdullah Al Mahmud ",
+            "review_date": "",
+            "product_name": "Shop this product",
+            "product_url": "shopify://products/slim-sleeve-horsemen-wallet"
+          }
+        },
+        "review_YwctTn": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/605608444_122096935287195107_5670174239681554515_n_1.jpg",
+            "rating": 5,
+            "review_title": "The best gift!",
+            "review_text": "Mashallah, Thanks for the Qur’an.",
+            "reviewer_name": "Sami The Explorer",
+            "review_date": "",
+            "product_name": "Shop this product",
+            "product_url": "shopify://products/leather-covered-holy-quran-color-coded-tajweed-rules"
+          }
+        },
+        "review_fjjhFK": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Ramadanpackage_CalendarInside.jpg",
+            "rating": 5,
+            "review_title": "Great backpack",
+            "review_text": "New Year Calendar means Sunnah Store, Calendar. Love their concept and creativity.",
+            "reviewer_name": "Ashique Mahmud Choudhury",
+            "review_date": "",
+            "product_name": "Shop this product",
+            "product_url": "shopify://products/deen-calendar-guardian-edition"
+          }
+        },
+        "review_hKrFxc": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/DSC8322.jpg",
+            "rating": 5,
+            "review_title": "I'm blown away!",
+            "review_text": "I’ve picked up the product. I truly appreciate your warm hospitality and excellent service.\nThank you so much.",
+            "reviewer_name": "Abu Naser Muhammad Tahsin",
+            "review_date": "",
+            "product_name": "Shop this product",
+            "product_url": "shopify://products/hijab-gift-hamper-pashmina-10"
+          }
+        }
+      },
+      "block_order": [
+        "review_6x8jRy",
+        "review_8N8CCL",
+        "review_AktKTa",
+        "review_YwctTn",
+        "review_fjjhFK",
+        "review_hKrFxc"
+      ],
+      "name": "Customer Reviews",
+      "settings": {
+        "heading": "Most Loved Products",
+        "subheading": "What our community says",
+        "heading_tag": "h2",
+        "heading_align": "center",
+        "cards_visible": 5,
+        "mobile_cards": 1,
+        "card_gap": 20,
+        "card_radius": 12,
+        "img_height": 260,
+        "mobile_img_height": 200,
+        "show_arrows": true,
+        "show_dots": false,
+        "autoplay": true,
+        "autoplay_speed": 4,
+        "bg_color": "#f5f0e8",
+        "card_bg": "#f9f9f9",
+        "star_color": "#f5a623",
+        "text_color": "#222222",
+        "subtext_color": "#666666",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_left": 40,
+        "padding_right": 40
+      }
+    },
+    "marquee_pxQxYL": {
+      "type": "marquee",
+      "blocks": {
+        "text_RmhyjV": {
+          "type": "text",
+          "settings": {
+            "text": "<p><em>\"The best of you are those who are best to their families.\" </em>(Tirmidhi)</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#000000",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_R9UU97": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p><em>\"Convey from me even if it is one verse.\"   </em>(Bukhari)</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_ALx9RB": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p><em>\"Allah is beautiful and He loves beauty.\"  </em>(Muslim)</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_qQawrG": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p><em>\"Exchange gifts, as that will lead to increasing your love for one another.\" </em>(Bukhari)</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_RmhyjV",
+        "text_R9UU97",
+        "text_ALx9RB",
+        "text_qQawrG"
+      ],
+      "name": "t:names.marquee_section",
+      "settings": {
+        "movement_direction": "normal",
+        "speed": 35,
+        "color_scheme": "scheme-5",
+        "quote_color": "#ffffff",
+        "source_color": "#b8860b",
+        "padding-block-start": 24,
+        "padding-block-end": 24,
+        "gap_between_elements": 50
       }
     }
   },
   "order": [
-    "custom_banner_section_XKBJbD",
-    "custom_banner_section_NAaahQ",
-    "custom_product_showcase_zdk4Ba",
-    "custom_banner_section_j3fdrU",
-    "new_custom_categories_design_YGn7yP",
-    "soulful_latte_blog_hXn4a7",
-    "brand_logo_slider_YignaH",
-    "hair_reviews_section_V7LAKb",
-    "corporate_gifting_header_LgqYMz"
+    "hero_jVaWmY",
+    "occasion_carousel_T4UVCz",
+    "community_favourites_cjzRfY",
+    "collection_list_grid_zfnXbF",
+    "product_list_bxfQbh",
+    "whats_new_today_LHWJya",
+    "sunnah_collection_cards_bcQJt9",
+    "community_favourites_F6YiA6",
+    "section_Li6BNn",
+    "brands_discovered_JfVNnU",
+    "spotlight_P8UmjN",
+    "customer_reviews_4FJaAn",
+    "marquee_pxQxYL"
   ]
 }
